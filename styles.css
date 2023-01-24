@@ -2,14 +2,26 @@ body {
     background-color:rgb(31, 33, 35);
 }
 a{
-    color:gray;
-    font-style: italic;
+    color: rgb(200, 200, 200);
+    font-weight: bold;
     text-decoration: none;
 }
 .big {
     font-size:5em;
 }    
-
+.bold {
+    font-weight: bold;
+}
+.medium{
+    font-size:2em;
+}
+.shadow{
+    box-shadow: 10px 10px 5px black;  
+}
+.logo{
+    width:20%;
+    height:20%;
+}
 .white{
     color: white;
 }
@@ -17,9 +29,11 @@ a{
 .center {
     text-align: center;
 }
-
+.left {
+    text-align: left;
+}
 .slideup{
-    animation-duration: 2s;
+    animation-duration: 1.5s;
     animation-name: slideup;
     animation-timing-function: ease-out;
 }
