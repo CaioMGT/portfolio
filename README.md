@@ -1,1 +1,1 @@
-This is the git repository for my future portfolio site, that will be deployed using Github Pages
+This is the git repository for my future site, that will be deployed using Github Pages
