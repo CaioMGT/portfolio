@@ -33,7 +33,7 @@ a{
     text-align: left;
 }
 .slideup{
-    animation-duration: s;
+    animation-duration: 2s;
     animation-name: slideup;
     animation-timing-function: ease-out;
 }
