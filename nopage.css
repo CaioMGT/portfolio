@@ -6,6 +6,9 @@
     animation-name: fadein;
     animation-timing-function: linear;
 }
+.roboto {
+    font-family: "Roboto", sans-serif;
+}
 @keyframes fadein{
     from {
         opacity: 0;
