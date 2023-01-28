@@ -35,3 +35,26 @@ jobs:
         run: |
           npx tailwindcss -i ./styles.css -o ./dist/output.css
           npx tailwindcss -i ./nopage.css -o ./dist/nopage.css
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v1.0.7
+        with:
+          path: "dist/"
+        
+  deploy:
+    needs: build
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+          
