@@ -1,6 +1,7 @@
-body {
-    background-color:rgb(31, 33, 35);
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 a{
     color: rgb(200, 200, 200);
     font-weight: bold;
@@ -56,8 +57,7 @@ a{
     border-color: #1e1e1e;
     border-top-style: solid;
 }
-.text {
-    color: white;
+.roboto {
     font-family: "Roboto", sans-serif;
 }
 #abtme {
