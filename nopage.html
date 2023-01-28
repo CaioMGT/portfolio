@@ -5,11 +5,19 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/dist/nopage.css">
-        <script src="index.js""></script>
+        <script src="thememgr.js""></script>
+        <script>
+            window.onload = () => {
+                document.getElementById('return').addEventListener('click', click)
+            }
+            function click() {
+                location.replace('/')
+            }
+        </script>
     </head>
     <body class="bg-neutral-300 dark:bg-neutral-800">
         <h1 class="text-7xl font-thin text-center text-black dark:text-white fadein">Oops!</h1>
         <h1 class="py-4 text-4xl font-thin text-center text-gray-600 dark:text-gray-400 fadein">We couldn't find that page</h1>
-        <a class="roboto text-4xl font-light text-center text-neutral-400 dark:text-gray-400 fadein" href="/">Go back</a>
+        <button type="button" id='return' class="roboto text-4xl font-light text-neutral-400 dark:text-gray-400 fadein" style="text-align:center;">Go back</button>
     </body>
 </html>
