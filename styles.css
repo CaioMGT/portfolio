@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 .slideup{
     animation-duration: 2s;
     animation-name: slideup;

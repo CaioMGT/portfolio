@@ -1,0 +1,13 @@
+.fadein{
+    animation-duration: 5s;
+    animation-name: fadein;
+    animation-timing-function: linear;
+}
+@keyframes fadein{
+    from {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
