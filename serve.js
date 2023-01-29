@@ -21,7 +21,7 @@ app.all('*', (req, res) => {
   switch (extension) {
     case "/":
       res.writeHead(200, {'Content-Type': 'text/html'})
-      fs.createReadStream("index.html").pipe(res)
+      fs.createReadStream("./dist/index.html").pipe(res)
       dontCheck = true
       break
     case "html":
@@ -38,7 +38,7 @@ app.all('*', (req, res) => {
       break
     default:
       res.writeHead(200, {'Content-Type': 'text/html'})
-      fs.createReadStream("nopage.html").pipe(res)
+      fs.createReadStream("./dist/nopage.html").pipe(res)
       dontCheck = true
   }
   if (!(dontCheck)) {
