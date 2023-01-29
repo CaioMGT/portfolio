@@ -1,49 +1,12 @@
-body {
-    background-color:rgb(31, 33, 35);
-}
-a{
-    color: rgb(200, 200, 200);
-    font-weight: bold;
-    text-decoration: none;
-}
-.big {
-    font-size:5em;
-}    
-.bold {
-    font-weight: bold;
-}
-.medium{
-    font-size:2em;
-}
-.shadow{
-    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.6);  
-}
-.logo{
-    width:20%;
-    height:20%;
-}
-.white{
-    color: white;
-}
-
-.center {
-    text-align: center;
-}
-.left {
-    text-align: left;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 .slideup{
     animation-duration: 2s;
     animation-name: slideup;
     animation-timing-function: ease-out;
 }
 
-.bg{
-    background-color: #181818;
-    margin-left: 10%;
-    margin-right: 10%;
-    border-radius: 10px;
-}
 
 .fadein{
     animation-duration: 3s;
@@ -56,22 +19,8 @@ a{
     border-color: #1e1e1e;
     border-top-style: solid;
 }
-.text {
-    color: white;
+.roboto {
     font-family: "Roboto", sans-serif;
-}
-#abtme {
-    font-size:larger  
-}
-#subtitle {
-    margin-left: 10%;
-    margin-right: 10%;
-    font-weight: 300;
-    color:gray
-}
-
-#heading {
-    font-weight: 100;
 }
 
 @keyframes slideup{

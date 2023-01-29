@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html id="html" class="dark">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/dist/nopage.css">
+        <script src="thememgr.js""></script>
+        <script>
+            window.onload = () => {
+                document.getElementById('return').addEventListener('click', click)
+            }
+            function click() {
+                location.replace('/')
+            }
+        </script>
+    </head>
+    <body class="bg-neutral-300 dark:bg-neutral-800">
+        <h1 class="roboto font-thin text-center text-black dark:text-white">404</h1>
+        <h1 class="text-7xl font-thin text-center text-black dark:text-white fadein">Oops!</h1>
+        <h1 class="py-4 text-4xl font-thin text-center text-gray-600 dark:text-gray-400 fadein">We couldn't find that page</h1>
+        <div class="text-center"><button type="button" id='return' class="text-neutral-100 dark:text-white roboto text-center text-2xl font-light bg-sky-800 rounded-full px-2 hover:bg-sky-900">Go back</button>
+        </div>
+    </body>
+</html>
