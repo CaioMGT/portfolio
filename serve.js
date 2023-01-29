@@ -38,11 +38,11 @@ app.all('*', (req, res) => {
       break
     default:
       res.writeHead(200, {'Content-Type': 'text/html'})
-      fs.createReadStream("./dist/nopage.html").pipe(res)
+      fs.createReadStream("./dist/404.html").pipe(res)
       dontCheck = true
   }
   if (!(dontCheck)) {
-    fs.createReadStream(req.url.substring(1)).pipe(res)
+    fs.createReadStream("./dist" + req.url).pipe(res)
   } 
 })
 /*app.get('/devnetlogo.png', (req, res) => {
