@@ -42,7 +42,13 @@ app.all('*', (req, res) => {
       dontCheck = true
   }
   if (!(dontCheck)) {
-    fs.createReadStream("./dist" + req.url).pipe(res)
+    try {
+      fs.createReadStream("./dist" + req.url).pipe(res)
+    } catch (err) {
+      console.log(err)
+      res.writeHead(404, "Could not find file")
+      res.end()
+    }
   } 
 })
 /*app.get('/devnetlogo.png', (req, res) => {
