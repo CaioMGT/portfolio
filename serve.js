@@ -42,7 +42,7 @@ app.all('*', (req, res) => {
       dontCheck = true
   }
   if (!(dontCheck)) {
-    fs.createReadStream(req.url.substring(1)).pipe(res)
+    fs.createReadStream("./dist" + req.url).pipe(res)
   } 
 })
 /*app.get('/devnetlogo.png', (req, res) => {
