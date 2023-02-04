@@ -25,6 +25,9 @@
 .shadow-light{
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);  
 }
+.glow {
+    text-shadow: 2px 2px 50px rgb(255, 255, 255)
+}
 @keyframes slideup{
     from {
         position: relative;
