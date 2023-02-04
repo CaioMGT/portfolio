@@ -9,6 +9,7 @@ function changetheme(theme, set) {
     if (set) {
         localStorage.setItem("Theme", theme)
     }
+    // It's fine to do it this way since the html element has no other classes
     if (theme == Enum.LIGHT) {
         html.className = ""
         theme = Enum.LIGHT
