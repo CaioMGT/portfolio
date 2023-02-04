@@ -38,7 +38,8 @@ app.all('*', (req, res) => {
       break
     default:
       res.writeHead(200, {'Content-Type': 'text/html'})
-      fs.createReadStream("./dist/404.html").pipe(res)
+      //This technically means I won't get a 404 page anymore, but this only affects me locally as github already handles 404 pages on Github Poges
+      fs.createReadStream("./dist" + req.url + ".html").pipe(res)
       dontCheck = true
   }
   if (!(dontCheck)) {
