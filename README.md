@@ -1,2 +1,11 @@
+# My personal website
+
 This is the git repository for my website, that is deployed using Github Pages  
-Any development should be pushed to another branch, as this branch is the current stable (and production) branch.
+The production branch is main, please don't target experimental code towards that branch.
+
+## Goals
+
+- Get a domain (likely caiomgt.com or something)  
+- Implement a topbar
+- Make portfolio
+- Have fun
