@@ -33,8 +33,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Build website
         run: |
-          npx tailwindcss -i ./styles.css -o ./dist/output.css
-          npx tailwindcss -i ./nopage.css -o ./dist/nopage.css
+          for f in ./*.css; do ## Loops through all files with .css extension and processes them with tailwindcss
+            echo "Processing $f"
+            npx tailwindcss -i $f -o ./dist/${f##*/} 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v1.0.7
         with:
