@@ -30,12 +30,10 @@ jobs:
       - name: Install Dependencies
         run: |
           npm install
-      # Runs a set of commands using the runners shell
+      ## Loops through all files with .css extension and processes them with tailwindcss
       - name: Build website
         run: |
-          for f in ./*.css; do ## Loops through all files with .css extension and processes them with tailwindcss
-            echo "Processing $f"
-            npx tailwindcss -i $f -o ./dist/${f##*/} 
+          for f in ./*.css; do echo "Processing $f"; npx tailwindcss -i $f -o ./dist/${f##*/}; done
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v1.0.7
         with:
