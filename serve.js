@@ -36,13 +36,23 @@ app.all('*', (req, res) => {
     case "png":
       res.writeHead(200, {'Content-Type': 'image/png'})
       break
+    case "ico":
+      dontCheck = true
+      break
     default:
       res.writeHead(200, {'Content-Type': 'text/html'})
-      fs.createReadStream("./dist/404.html").pipe(res)
+      //This technically means I won't get a 404 page anymore, but this only affects me locally as github already handles 404 pages on Github Poges
+      fs.createReadStream("./dist" + req.url + ".html").pipe(res)
       dontCheck = true
   }
   if (!(dontCheck)) {
-    fs.createReadStream("./dist" + req.url).pipe(res)
+    try {
+      fs.createReadStream("./dist" + req.url).pipe(res)
+    } catch (err) {
+      console.log(err)
+      res.writeHead(404, "Could not find file")
+      res.end()
+    }
   } 
 })
 /*app.get('/devnetlogo.png', (req, res) => {

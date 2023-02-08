@@ -1,3 +1,4 @@
+// Include this in every html file as this is what handles the website theme. DO. NOT. FORGET.
 const Enum = {
     LIGHT: 1,
     DARK : 2

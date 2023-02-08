@@ -6,23 +6,20 @@
     animation-name: slideup;
     animation-timing-function: ease-out;
 }
-
-
 .fadein{
     animation-duration: 3s;
     animation-name: fadein;
     animation-timing-function: linear;
 }
-.upperborder{
-    padding-top: 10px;
-    border-top: 5px;
-    border-color: #1e1e1e;
-    border-top-style: solid;
-}
 .roboto {
     font-family: "Roboto", sans-serif;
 }
-
+.shadow-light{
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);  
+}
+.glow {
+    text-shadow: 2px 2px 50px rgb(255, 255, 255)
+}
 @keyframes slideup{
     from {
         position: relative;
@@ -37,7 +34,6 @@
         top : 0px;
     }
 }
-
 @keyframes fadein{
     from {
         opacity: 0;
