@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.slideup{
+    animation-duration: 2s;
+    animation-name: slideup;
+    animation-timing-function: ease-out;
+}
+.fadein{
+    animation-duration: 5s;
+    animation-name: fadein;
+    animation-timing-function: linear;
+}
+.roboto {
+    font-family: "Roboto", sans-serif;
+}
+.glow {
+    text-shadow: 2px 2px 50px rgb(255, 255, 255)
+}
+@keyframes slideup{
+    from {
+        position: relative;
+        top:80px;
+    }
+    20%{
+        position: relative;
+        top:40px;
+    }
+    to {
+        position:relative;
+        top : 0px;
+    }
+}
+@keyframes fadein{
+    from {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
