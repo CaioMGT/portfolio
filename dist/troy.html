@@ -14,10 +14,16 @@
                 const json = JSON.parse(http.responseText)
                 location.replace("https://www.youtube.com/watch?v=" + json.items[0].id.videoId)
             }
+            window.onload = setTimeout(() => {
+                const text = document.createElement("h1")
+                text.innerText = "This seems to be taking a bit long... If it takes any longer, try refreshing the website!"
+                text.className = "py-4 text-4xl font-thin text-center text-gray-600 dark:text-gray-400 fadein"
+                document.getElementById("body").appendChild(text)
+            }, 5000)
         </script>
     <title>Troy</title>
     </head>
-    <body class="bg-neutral-300 dark:bg-neutral-800">
+    <body id="body" class="bg-neutral-300 dark:bg-neutral-800">
         <h1 class="text-7xl font-thin text-center text-black dark:text-white fadein">Redirecting you to the latest video</h1>
     </body>
 </html>
