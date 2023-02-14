@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html id="html" class="dark">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./nopage.css">
+        <script src="thememgr.js""></script>
+        <script>
+            const http = new XMLHttpRequest()
+            http.open("GET", "https://www.googleapis.com/youtube/v3/search?key=AIzaSyD_i04nDkY5ryPnl2ytYMPpfom3pXqXAFk&channelId=UCxJ_7k_f72zdyxHZOXyidNA&part=snippet,id&order=date&maxResults=1")
+            http.send()
+            http.onload=(e) => {
+                const json = JSON.parse(http.responseText)
+                location.replace("https://www.youtube.com/watch?v=" + json.items[0].id.videoId)
+            }
+        </script>
+    <title>Troy</title>
+    </head>
+    <body class="bg-neutral-300 dark:bg-neutral-800">
+        <h1 class="text-7xl font-thin text-center text-black dark:text-white fadein">Redirecting you to the latest video</h1>
+    </body>
+</html>
