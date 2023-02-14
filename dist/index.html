@@ -8,6 +8,21 @@
   <script src="thememgr.js"></script>
   <script src="themeswitcher.js"></script>
   <script src="topbar.js"></script>
+  <script>
+    window.onload = () => {
+      const birth = new Date("2008-04-10")
+      const current = new Date()
+      let age = current.getFullYear() - birth.getFullYear()
+      console.log("current age is " + age)
+      console.log("current month is " + (current.getMonth() + 1) + ", target month is " + (birth.getMonth() + 1))
+      if (((current.getMonth() + 1) - (birth.getMonth() + 1)) < 0) {
+        //has not reached april yet, removing 1 year from age
+        age--
+        console.log("changed age to " + age)
+      }
+      document.getElementById("age").innerText = age
+    }
+  </script>
   <title>About Me</title>
 </head>
 <body class="bg-neutral-300 dark:bg-neutral-800" draggable="false">
@@ -17,7 +32,7 @@
   <h1 class="py-8 roboto text-black dark:text-white text-center text-6xl fadein font-thin">About Me:</h1>
   <div class="flex grid-rows-1 justify-center">
     <div class="rounded-md roboto w-3/4 bg-neutral-100 dark:bg-neutral-900 dark:text-white text-center fadein left-1/4 right-1/4 md:text-xl">
-      I'm a 15 year old Brazilian Programmer and I like playing and making games. I have been programming ever since the age of 10, using Codecademy, where I learnt my first language, <a class="text-neutral-400 dark:text-gray-400" href="https://dotnet.microsoft.com/en-us/languages/csharp" target="_blank">C#</a>, following suit by <a class="text-neutral-400 dark:text-gray-400" href="https://www.javascript.com/" target="_blank">JavaScript </a> and <a class="text-neutral-400 dark:text-gray-400" href="https://www.lua.org/" target="_blank">Lua</a>. Today, I know about 6 programming languages fluently.<br> 
+      I'm a <span id="age">(Calculating Age)</span> year old Brazilian Programmer and I like playing and making games. I have been programming ever since the age of 10, using Codecademy, where I learnt my first language, <a class="text-neutral-400 dark:text-gray-400" href="https://dotnet.microsoft.com/en-us/languages/csharp" target="_blank">C#</a>, following suit by <a class="text-neutral-400 dark:text-gray-400" href="https://www.javascript.com/" target="_blank">JavaScript </a> and <a class="text-neutral-400 dark:text-gray-400" href="https://www.lua.org/" target="_blank">Lua</a>. Today, I know about 6 programming languages fluently.<br> 
       I am part of two Roblox groups: <br>
       <a href="https://www.roblox.com/groups/5866725/DevNet-Studios#!/about" target="_blank" class="roboto text-4xl text-black dark:text-white">DevNet Studios</a>
       <div class="flex flex-row px-10 text-left">
