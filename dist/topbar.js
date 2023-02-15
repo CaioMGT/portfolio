@@ -4,6 +4,7 @@ class Topbar extends HTMLElement {
         super()
     }
     connectedCallback() {
+        // Remember: only parent elements in connectedCallback
         const div = document.createElement("div")
         div.className = "bg-neutral-100 dark:bg-neutral-900 w-full popup"
         div.style = `
