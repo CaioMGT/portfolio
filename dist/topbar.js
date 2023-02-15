@@ -3,7 +3,10 @@ function createButton(text, href) {
     const button = document.createElement("a")
     button.innerText = text
     button.href = href
-    button.className = "text-right roboto text-black dark:text-white"
+    button.className = "roboto text-black dark:text-white"
+    button.style = `
+        padding-top: 8px;
+    `
     return button
 }
 class Topbar extends HTMLElement {
@@ -13,12 +16,15 @@ class Topbar extends HTMLElement {
     connectedCallback() {
         // Remember: only parent elements in connectedCallback
         const bar = document.createElement("div")
-        bar.className = "bg-neutral-100 dark:bg-neutral-900 w-full popup"
+        bar.className = "bg-neutral-100 dark:bg-neutral-900 w-full popup flex flex-row-reverse gap-x-6"
         bar.style = `
-            height: 5vh
+            height: 40px
         `
         const aboutme = createButton("About Me", "/")
+        aboutme.classList.add("pr-6")
         bar.appendChild(aboutme)
+        const portfolio = createButton("Portfolio", "/portfolio")
+        bar.appendChild(portfolio)
         // Do I need to clean up my elements on disconnectedCallback?
         this.appendChild(bar)
     }
