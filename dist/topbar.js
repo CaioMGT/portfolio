@@ -10,6 +10,7 @@ function createButton(text, href) {
     return button
 }
 class Topbar extends HTMLElement {
+    static get observedAttributes() { return ['active-button']; }
     constructor() {
         super()
     }
@@ -20,13 +21,25 @@ class Topbar extends HTMLElement {
         bar.style = `
             height: 40px
         `
+        this.buttons = {}
         const aboutme = createButton("About Me", "/")
         aboutme.classList.add("pr-6")
         bar.appendChild(aboutme)
+        this.buttons.aboutme = aboutme
         const portfolio = createButton("Portfolio", "/portfolio")
         bar.appendChild(portfolio)
+        this.buttons.portfolio = portfolio
         // Do I need to clean up my elements on disconnectedCallback?
+        if (this.hasAttribute("active-button")) {
+            this.buttons[this.getAttribute('active-button')].classList.add("active")
+        }
         this.appendChild(bar)
+    }
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name == "active-button") {
+            this.buttons[newValue].classList.add("active")
+            this.buttons[oldValue].classList.remove("active")
+        }
     }
 }
 customElements.define("top-nav", Topbar)
