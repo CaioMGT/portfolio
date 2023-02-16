@@ -9,8 +9,16 @@ function createButton(text, href) {
         padding-top: 8px;
         border-radius: 10px;
     `
+    button.addEventListener("click", () => {
+        if (currentButton) {
+            currentButton.classList.remove("active")
+            button.classList.add("active")
+            currentButton = button
+        }
+    })
     return button
 }
+let currentButton
 let ready = false
 class Topbar extends HTMLElement {
     static get observedAttributes() { return ['active-button']; }
@@ -35,6 +43,7 @@ class Topbar extends HTMLElement {
         this.buttons.portfolio = portfolio
         if (this.hasAttribute("active-button")) {
             this.buttons[this.getAttribute('active-button')].classList.add("active")
+            currentButton = this.buttons[this.getAttribute('active-button')]
         }
         // Do I need to clean up my elements on disconnectedCallback?
         this.appendChild(bar)
@@ -44,6 +53,7 @@ class Topbar extends HTMLElement {
             if (name == "active-button") {
                 this.buttons[newValue].classList.add("active")
                 this.buttons[oldValue].classList.remove("active")
+                currentButton = this.buttons[newValue]
             }
         }
     }
