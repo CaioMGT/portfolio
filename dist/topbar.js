@@ -3,11 +3,10 @@ function createButton(text, href) {
     const button = document.createElement("a")
     button.innerText = text
     button.href = href
-    button.className = "roboto text-black dark:text-white top-button px-2"
+    button.className = "roboto text-black dark:text-white top-button px-2 py-2"
     // Buttons shouldn't be very tall, but idk how to fix that without messing up the text. Should look how to fix this later.
     button.style = `
-        padding-top: 8px;
-        border-radius: 10px;
+        border-radius: 15px;
     `
     button.addEventListener("click", () => {
         if (currentButton) {
