@@ -1,4 +1,4 @@
-window.onload = () => {
+window.addEventListener("load", () => {
     let button = document.getElementById('theme-switcher')
     if (theme == Enum.DARK) {
         button.innerText = "Enable Light Mode"
@@ -17,4 +17,4 @@ window.onload = () => {
             button.innerText = "Enable Dark Mode"
         }
     })
-}
+})
