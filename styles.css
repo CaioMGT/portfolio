@@ -11,6 +11,11 @@
     animation-name: fadein;
     animation-timing-function: linear;
 }
+.popup {
+    animation-duration: 1s;
+    animation-name: popup;
+    animation-timing-function: linear;
+}
 .roboto {
     font-family: "Roboto", sans-serif;
 }
@@ -18,7 +23,61 @@
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);  
 }
 .glow {
-    text-shadow: 2px 2px 50px rgb(255, 255, 255)
+    text-shadow: 2px 2px 50px rgb(255, 255, 255);
+}
+.active {
+    background-color:rgba(255, 255, 255, 0.2);
+}
+.top-button:hover{
+    background-color:rgba(255, 255, 255, 0.5);
+}
+@keyframes popup {
+    0% {
+        transform:translateY(-100%);
+    }
+    5% {
+        transform:translateY(-100%);
+    }
+    15% {
+        transform:translateY(0%);
+        padding-bottom: 5px;
+    }
+    30% {
+        transform:translateY(-50%);
+    }
+    40% {
+        transform:translateY(0%);
+        padding-bottom: 6px;
+    }
+    50% {
+        transform:translateY(-30%);
+    }
+    70% {
+        transform:translateY(0%);
+        padding-bottom: 7px;
+    }
+    80% {
+      transform:translateY(-15%);
+    }
+    90% {
+      transform:translateY(0%);
+      padding-bottom: 8px;
+    }
+    95% {
+      transform:translateY(-7%);
+    }
+    97% {
+      transform:translateY(0%);
+      padding-bottom: 9px;
+    }
+    99% {
+      transform:translateY(-3%);
+    }
+    100% {
+      transform:translateY(0);
+      padding-bottom: 9px;
+      opacity: 1;
+    }
 }
 @keyframes slideup{
     from {
