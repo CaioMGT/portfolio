@@ -11,6 +11,11 @@
     animation-name: fadein;
     animation-timing-function: linear;
 }
+.fadelong{
+    animation-duration: 5s;
+    animation-name: fadein;
+    animation-timing-function: linear;
+}
 .popup {
     animation-duration: 1s;
     animation-name: popup;
