@@ -3,7 +3,7 @@ function createButton(text, href) {
     const button = document.createElement("a")
     button.innerText = text
     button.href = href
-    button.className = "roboto text-black dark:text-white top-button"
+    button.className = "roboto text-black dark:text-white top-button px-2"
     // Buttons shouldn't be very tall, but idk how to fix that without messing up the text. Should look how to fix this later.
     button.style = `
         padding-top: 8px;
@@ -28,7 +28,6 @@ class Topbar extends HTMLElement {
         this.buttons = {}
         const aboutme = createButton("About Me", "/")
         aboutme.classList.add("mr-4")
-        aboutme.classList.add("px-2")
         bar.appendChild(aboutme)
         this.buttons.aboutme = aboutme
         const portfolio = createButton("Portfolio", "/portfolio")

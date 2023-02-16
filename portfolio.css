@@ -12,6 +12,12 @@
 .glow {
     text-shadow: 2px 2px 50px rgb(255, 255, 255)
 }
+.top-button:hover{
+    background-color:rgba(255, 255, 255, 0.5);
+}
+.active {
+    background-color:rgba(255, 255, 255, 0.2);
+}
 @keyframes fadein{
     from {
         opacity: 0;
