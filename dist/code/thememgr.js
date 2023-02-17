@@ -4,9 +4,11 @@ const Enum = {
     DARK : 2
 }
 let theme = localStorage.getItem("Theme")
+const event = new Event("ThemeChange")
 changetheme(theme)
 function changetheme(theme, set) {
-    let html = document.getElementById("html")
+    let html = document.getElementsByTagName("html")[0]
+    html.dispatchEvent(event)
     if (set) {
         localStorage.setItem("Theme", theme)
     }
