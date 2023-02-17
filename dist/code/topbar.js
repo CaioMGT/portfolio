@@ -1,4 +1,5 @@
 // I want this to be easily re-usable in every page (maybe other than in the 404 page?)
+let settings
 function createButton(text, href) {
     const button = document.createElement("a")
     button.innerText = text
@@ -17,6 +18,14 @@ function createButton(text, href) {
     })
     return button
 }
+function updateSettings() {
+    // I'm inverting the colors on dark theme so the icon is more visible
+    if (theme == Enum.DARK) {
+        settings.style = "filter: invert(100%); cursor: pointer;"
+    } else {
+        settings.style = "cursor: pointer;"
+    }
+}
 let currentButton
 let ready = false
 class Topbar extends HTMLElement {
@@ -32,9 +41,17 @@ class Topbar extends HTMLElement {
         bar.style = `
             height: 40px
         `
+        settings = document.createElement("img")
+        settings.src = "./svg/cog.svg"
+        settings.classList.add("mr-4")
+        settings.addEventListener("click", () => {
+            location.replace("/settings")
+        })
+        updateSettings()
+        document.getElementsByTagName("html")[0].addEventListener("ThemeChange", updateSettings)
         this.buttons = {}
         const aboutme = createButton("About Me", "/")
-        aboutme.classList.add("mr-4")
+        bar.appendChild(settings)
         bar.appendChild(aboutme)
         this.buttons.aboutme = aboutme
         const portfolio = createButton("Portfolio", "/portfolio")
