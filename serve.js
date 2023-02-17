@@ -39,6 +39,9 @@ app.all('*', (req, res) => {
     case "ico":
       dontCheck = true
       break
+    case "svg":
+      res.writeHead(200, {'Content-Type': 'image/svg+xml'})
+      break
     default:
       res.writeHead(200, {'Content-Type': 'text/html'})
       //This technically means I won't get a 404 page anymore, but this only affects me locally as github already handles 404 pages on Github Poges
