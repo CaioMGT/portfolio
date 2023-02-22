@@ -8,6 +8,5 @@ The production branch is main, please don't target experimental code towards tha
 ## Goals
 
 - Get a domain (likely caiomgt.com or something)  
-- Implement a topbar
 - Make portfolio
 - Have fun
