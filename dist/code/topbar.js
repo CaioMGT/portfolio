@@ -11,8 +11,8 @@ function createButton(text, href) {
     `
     button.addEventListener("click", () => {
         if (currentButton) {
-            currentButton.classList.remove("active")
-            button.classList.add("active")
+            currentButton.classList.remove("activeTop")
+            button.classList.add("activeTop")
             currentButton = button
         }
     })
@@ -67,8 +67,8 @@ class Topbar extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         if (ready) {
             if (name == "active-button") {
-                this.buttons[newValue].classList.add("active")
-                this.buttons[oldValue].classList.remove("active")
+                this.buttons[newValue].classList.add("activeTop")
+                this.buttons[oldValue].classList.remove("activeTop")
                 currentButton = this.buttons[newValue]
             }
         }

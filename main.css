@@ -21,17 +21,31 @@
     animation-name: popup;
     animation-timing-function: linear;
 }
-#theme-switcher.normal{
+.toggle.normal{
     width:50px;
-    height:20px;
+    height:25px;
     animation-duration: 1s;
     animation-name: normalTrans;
+    background-color:rgb(70, 70, 70);
 }
-#theme-switcher.active{
+.toggle.active{
     width:50px;
-    height:20px;
+    height:25px;
     animation-duration: 1s;
     animation-name: activeTrans;
+    background-color: rgb(42, 174, 245);
+}
+.dot.normal {
+    position:relative;
+    animation-duration: 1s;
+    animation-name: dotNormal;
+    left:0px;
+}
+.dot.active {
+    position:relative;
+    left:30px;
+    animation-duration: 1s;
+    animation-name: dotActive;
 }
 .roboto {
     font-family: "Roboto", sans-serif;
@@ -42,16 +56,35 @@
 .glow {
     text-shadow: 2px 2px 50px rgb(255, 255, 255);
 }
-.active {
+.activeTop {
     background-color:rgba(255, 255, 255, 0.2);
 }
 .top-button:hover{
     background-color:rgba(255, 255, 255, 0.5);
 }
-
+@keyframes dotNormal {
+    0% {
+        position:relative;
+        left:30px;
+    }
+    100% {
+        position:relative;
+        left:0px;
+    }
+}
+@keyframes dotActive {
+    0% {
+        position:relative;
+        left:0px;
+    }
+    100% {
+        position:relative;
+        left:30px;
+    }
+}
 @keyframes normalTrans {
     0% {
-        background-color: initial;
+        background-color: rgb(42, 174, 245);
     }
     100% {
         background-color: rgb(70, 70, 70);
@@ -59,10 +92,10 @@
 }
 @keyframes activeTrans {
     0% {
-        background-color: initial;
+        background-color: rgb(70, 70, 70);
     }
     100% {
-        background-color: rgb(7, 89, 133);
+        background-color: rgb(42, 174, 245);
     }
 }
 
