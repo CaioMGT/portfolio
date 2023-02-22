@@ -21,6 +21,18 @@
     animation-name: popup;
     animation-timing-function: linear;
 }
+#theme-switcher.normal{
+    width:50px;
+    height:20px;
+    animation-duration: 1s;
+    animation-name: normalTrans;
+}
+#theme-switcher.active{
+    width:50px;
+    height:20px;
+    animation-duration: 1s;
+    animation-name: activeTrans;
+}
 .roboto {
     font-family: "Roboto", sans-serif;
 }
@@ -36,6 +48,47 @@
 .top-button:hover{
     background-color:rgba(255, 255, 255, 0.5);
 }
+
+@keyframes normalTrans {
+    0% {
+        background-color: initial;
+    }
+    100% {
+        background-color: rgb(70, 70, 70);
+    }
+}
+@keyframes activeTrans {
+    0% {
+        background-color: initial;
+    }
+    100% {
+        background-color: rgb(7, 89, 133);
+    }
+}
+
+@keyframes slideup {
+    from {
+        position: relative;
+        top:80px;
+    }
+    20%{
+        position: relative;
+        top:40px;
+    }
+    to {
+        position:relative;
+        top: 0px;
+    }
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 @keyframes popup {
     0% {
         transform:translateY(-100%);
@@ -82,27 +135,5 @@
       transform:translateY(0);
       padding-bottom: 9px;
       opacity: 1;
-    }
-}
-@keyframes slideup{
-    from {
-        position: relative;
-        top:80px;
-    }
-    20%{
-        position: relative;
-        top:40px;
-    }
-    to {
-        position:relative;
-        top: 0px;
-    }
-}
-@keyframes fadein{
-    from {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
     }
 }
