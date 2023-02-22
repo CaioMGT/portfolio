@@ -4,6 +4,12 @@ const Enum = {
     DARK : 2
 }
 let theme = localStorage.getItem("Theme")
+// This is necessary in case there isn't a set theme, I only noticed this
+// was an issue when the dark theme wasn't being applied to the settings cog
+if (theme == null) {
+    theme = Enum.DARK
+    localStorage.setItem("Theme", theme)
+}
 const event = new Event("ThemeChange")
 changetheme(theme)
 function changetheme(theme, set) {
