@@ -6,6 +6,7 @@ const Enum = {
 let theme = localStorage.getItem("Theme")
 // This is necessary in case there isn't a set theme, I only noticed this
 // was an issue when the dark theme wasn't being applied to the settings cog
+// when there isn't a set theme
 if (theme == null) {
     theme = Enum.DARK
     localStorage.setItem("Theme", theme)
