@@ -16,7 +16,7 @@ changetheme(theme)
 function changetheme(themeChange, set) {
     let html = document.documentElement
     if (set) {
-        localStorage.setItem("Theme", theme)
+        localStorage.setItem("Theme", themeChange)
     }
     // It's fine to do it this way since the html element has no other classes
     if (themeChange == Enum.LIGHT) {
