@@ -11,11 +11,11 @@ if (theme == null) {
     theme = Enum.DARK
     localStorage.setItem("Theme", theme)
 }
-const event = new Event("ThemeChange")
+const ThemeChange = new Event("ThemeChange")
 changetheme(theme)
 function changetheme(theme, set) {
     let html = document.documentElement
-    html.dispatchEvent(event)
+    html.dispatchEvent(ThemeChange)
     if (set) {
         localStorage.setItem("Theme", theme)
     }
