@@ -48,7 +48,7 @@ class Topbar extends HTMLElement {
             location.replace("/settings")
         })
         updateSettings()
-        document.getElementsByTagName("html")[0].addEventListener("ThemeChange", updateSettings)
+        document.documentElement.addEventListener("ThemeChange", updateSettings)
         this.buttons = {}
         const aboutme = createButton("About Me", "/")
         bar.appendChild(settings)
