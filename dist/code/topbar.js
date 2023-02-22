@@ -58,7 +58,7 @@ class Topbar extends HTMLElement {
         bar.appendChild(portfolio)
         this.buttons.portfolio = portfolio
         if (this.hasAttribute("active-button")) {
-            this.buttons[this.getAttribute('active-button')].classList.add("active")
+            this.buttons[this.getAttribute('active-button')].classList.add("activeTop")
             currentButton = this.buttons[this.getAttribute('active-button')]
         }
         // Do I need to clean up my elements on disconnectedCallback?
