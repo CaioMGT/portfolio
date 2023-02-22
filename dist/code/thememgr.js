@@ -14,7 +14,7 @@ if (theme == null) {
 const event = new Event("ThemeChange")
 changetheme(theme)
 function changetheme(theme, set) {
-    let html = document.getElementsByTagName("html")[0]
+    let html = document.documentElement
     html.dispatchEvent(event)
     if (set) {
         localStorage.setItem("Theme", theme)
