@@ -13,18 +13,18 @@ if (theme == null) {
 }
 const ThemeChange = new Event("ThemeChange")
 changetheme(theme)
-function changetheme(theme, set) {
+function changetheme(themeChange, set) {
     let html = document.documentElement
-    html.dispatchEvent(ThemeChange)
     if (set) {
         localStorage.setItem("Theme", theme)
     }
     // It's fine to do it this way since the html element has no other classes
-    if (theme == Enum.LIGHT) {
+    if (themeChange == Enum.LIGHT) {
         html.className = ""
         theme = Enum.LIGHT
     } else {
         html.className = "dark"
         theme = Enum.DARK
     }
+    html.dispatchEvent(ThemeChange)
 }
