@@ -39,8 +39,11 @@ class Topbar extends HTMLElement {
         const bar = document.createElement("div")
         bar.className = "bg-neutral-100 dark:bg-neutral-900 w-full popup flex flex-row-reverse gap-x-6"
         bar.style = `
-            height: 40px
-        `
+            height: 40px;
+            position: -webkit-sticky; /* safari */
+            position: sticky;
+            top: 0;
+            `
         settings = document.createElement("img")
         settings.src = "./svg/cog.svg"
         settings.classList.add("mr-4")
