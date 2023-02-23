@@ -76,6 +76,32 @@ class Topbar extends HTMLElement {
     }
 }
 customElements.define("top-nav", Topbar)
+function createContainer(img, text, clickable, link) {
+    const container = document.createElement("div")
+    const logo = document.createElement("img")
+    logo.src = img
+    logo.style.display = "inline"
+    logo.style.height = "25px"
+    logo.style.width = "25px"
+    const desc = document.createElement("h1")
+    desc.innerText = text
+    desc.style.display = "inline"
+    desc.classList.add("ml-1")
+    desc.classList.add("mr-2")
+    if (clickable) {
+        logo.addEventListener("click", function() {
+            window.open(link, '_blank')
+        })
+        desc.addEventListener("click", function() {
+            window.open(link, '_blank')
+        })
+        logo.style.cursor = "pointer"
+        desc.style.cursor = "pointer"
+    }
+    container.appendChild(logo)
+    container.appendChild(desc)
+    return [container, logo, desc]
+}
 class BottomBar extends HTMLElement {
     static get observedAttributes() { return ['bottom']}
     constructor() {
@@ -92,20 +118,22 @@ class BottomBar extends HTMLElement {
         const contact = document.createElement("div")
         contact.className = "flex flex-col h-auto roboto content-center items-center"
         contact.innerText = "Contact:"
-        const discordContainer = document.createElement("div")
-        const discordLogo = document.createElement("img")
-        discordLogo.src = "./svg/discord.svg"
-        discordLogo.style.display = "inline"
-        discordLogo.style.height = "25px"
-        discordLogo.style.width = "25px"
-        const discord = document.createElement("h1")
-        discord.innerText = "capetaanal#1984"
-        discord.style.display = "inline"
-        discord.classList.add("ml-1")
-        discord.classList.add("mr-2")
-        discordContainer.appendChild(discordLogo)
-        discordContainer.appendChild(discord)
-        contact.appendChild(discordContainer)
+        const discord = createContainer("./svg/discord.svg", "capetaanal#2008")
+        const githubContainer = createContainer("./svg/gituhb-dark.svg", "CaioMGT", true, "https://github.com/CaioMGT")
+        if (theme == Enum.DARK) {
+            githubContainer[1].src = "./svg/github-white.svg"
+        } else {
+            githubContainer[1].src = "./svg/github-dark.svg"
+        }
+        document.documentElement.addEventListener("ThemeChange", function(){
+            if (theme == Enum.DARK) {
+                githubContainer[1].src = "./svg/github-white.svg"
+            } else {
+                githubContainer[1].src = "./svg/github-dark.svg"
+            }
+        })
+        contact.appendChild(discord[0])
+        contact.appendChild(githubContainer[0])
         bar.appendChild(contact)
         this.appendChild(bar)
     }
