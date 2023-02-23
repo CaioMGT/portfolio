@@ -78,6 +78,7 @@ class Topbar extends HTMLElement {
 customElements.define("top-nav", Topbar)
 function createContainer(img, text, clickable, link) {
     const container = document.createElement("div")
+    container.style.textALign = "left"
     const logo = document.createElement("img")
     logo.src = img
     logo.style.display = "inline"
@@ -119,7 +120,11 @@ class BottomBar extends HTMLElement {
         contact.className = "flex flex-col h-auto roboto content-center items-center"
         contact.innerText = "Contact:"
         const discord = createContainer("./svg/discord.svg", "capetaanal#2008")
-        const githubContainer = createContainer("./svg/gituhb-dark.svg", "CaioMGT", true, "https://github.com/CaioMGT")
+        const githubContainer = createContainer("./svg/github-dark.svg", "CaioMGT", true, "https://github.com/CaioMGT")
+        githubContainer[1].style.position = "relative"
+        githubContainer[1].style.right = "29px"
+        githubContainer[2].style.position = "relative"
+        githubContainer[2].style.right = "29px"
         if (theme == Enum.DARK) {
             githubContainer[1].src = "./svg/github-white.svg"
         } else {
