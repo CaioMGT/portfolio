@@ -45,6 +45,7 @@ class Topbar extends HTMLElement {
         settings = document.createElement("img")
         settings.src = "./svg/cog.svg"
         settings.classList.add("mr-4")
+        settings.classList.add("pt-1", "pb-1")
         settings.addEventListener("click", () => {
             location.replace("/settings")
         })
@@ -104,7 +105,6 @@ function createContainer(img, text, clickable, link) {
     return [container, logo, desc]
 }
 class BottomBar extends HTMLElement {
-    static get observedAttributes() { return ['bottom']}
     constructor() {
         super()
     }
@@ -112,10 +112,6 @@ class BottomBar extends HTMLElement {
         const bar = document.createElement("div")
         bar.className = "bg-neutral-100 dark:bg-neutral-900 w-full flex flex-row-reverse gap-x-6 roboto text-black dark:text-white mt-10"
         bar.style.height = "100px;"
-        if (this.hasAttribute("bottom")) {
-            bar.style.position = "absolute" 
-            bar.style.bottom = "0px"
-        }
         const contact = document.createElement("div")
         contact.className = "flex flex-col h-auto roboto content-center items-center"
         contact.innerText = "Contact:"
@@ -137,10 +133,23 @@ class BottomBar extends HTMLElement {
                 githubContainer[1].src = "./svg/github-dark.svg"
             }
         })
+        window.addEventListener("resize", function(){
+            console.log("your mom")
+            if (document.body.getBoundingClientRect().height <= window.innerHeight) {
+                bar.style.position = "absolute"
+                bar.style.bottom = "0px"
+            } else {
+                bar.style.position = "static"
+            }
+        })
         contact.appendChild(discord[0])
         contact.appendChild(githubContainer[0])
         bar.appendChild(contact)
         this.appendChild(bar)
+        if (document.body.getBoundingClientRect().height <= window.innerHeight) {
+            bar.style.position = "absolute"
+            bar.style.bottom = "0px"
+        }
     }
 }
 customElements.define("bottom-bar", BottomBar)
