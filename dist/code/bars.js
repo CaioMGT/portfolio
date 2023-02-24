@@ -104,6 +104,45 @@ function createContainer(img, text, clickable, link) {
     container.appendChild(desc)
     return [container, logo, desc]
 }
+function contactInfo(bar) {
+    const contact = document.createElement("div")
+    contact.className = "flex flex-col h-auto roboto content-center items-center"
+    contact.innerText = "Contact:"
+    const discord = createContainer("./svg/discord.svg", "capetaanal#2008")
+    discord[1].classList.add("mb-2")
+    discord[2].classList.add("mb-2")
+    const githubContainer = createContainer("./svg/github-dark.svg", "CaioMGT", true, "https://github.com/CaioMGT")
+    githubContainer[1].style.position = "relative"
+    githubContainer[1].style.right = "29px"
+    githubContainer[2].style.position = "relative"
+    githubContainer[2].style.right = "29px"
+    githubContainer[1].classList.add("mb-2")
+    githubContainer[2].classList.add("mb-2")
+    if (theme == Enum.DARK) {
+        githubContainer[1].src = "./svg/github-white.svg"
+    } else {
+        githubContainer[1].src = "./svg/github-dark.svg"
+    }
+    document.documentElement.addEventListener("ThemeChange", function(){
+        if (theme == Enum.DARK) {
+            githubContainer[1].src = "./svg/github-white.svg"
+        } else {
+            githubContainer[1].src = "./svg/github-dark.svg"
+        }
+    })
+    window.addEventListener("resize", function(){
+        console.log("your mom")
+        if (document.body.getBoundingClientRect().height <= window.innerHeight) {
+            bar.style.position = "absolute"
+            bar.style.bottom = "0px"
+        } else {
+            bar.style.position = "static"
+        }
+    })
+    contact.appendChild(discord[0])
+    contact.appendChild(githubContainer[0])
+    return contact
+}
 class BottomBar extends HTMLElement {
     constructor() {
         super()
@@ -112,39 +151,13 @@ class BottomBar extends HTMLElement {
         const bar = document.createElement("div")
         bar.className = "bg-neutral-100 dark:bg-neutral-900 w-full flex flex-row-reverse gap-x-6 roboto text-black dark:text-white mt-10"
         bar.style.height = "100px;"
-        const contact = document.createElement("div")
-        contact.className = "flex flex-col h-auto roboto content-center items-center"
-        contact.innerText = "Contact:"
-        const discord = createContainer("./svg/discord.svg", "capetaanal#2008")
-        const githubContainer = createContainer("./svg/github-dark.svg", "CaioMGT", true, "https://github.com/CaioMGT")
-        githubContainer[1].style.position = "relative"
-        githubContainer[1].style.right = "29px"
-        githubContainer[2].style.position = "relative"
-        githubContainer[2].style.right = "29px"
-        if (theme == Enum.DARK) {
-            githubContainer[1].src = "./svg/github-white.svg"
-        } else {
-            githubContainer[1].src = "./svg/github-dark.svg"
-        }
-        document.documentElement.addEventListener("ThemeChange", function(){
-            if (theme == Enum.DARK) {
-                githubContainer[1].src = "./svg/github-white.svg"
-            } else {
-                githubContainer[1].src = "./svg/github-dark.svg"
-            }
-        })
-        window.addEventListener("resize", function(){
-            console.log("your mom")
-            if (document.body.getBoundingClientRect().height <= window.innerHeight) {
-                bar.style.position = "absolute"
-                bar.style.bottom = "0px"
-            } else {
-                bar.style.position = "static"
-            }
-        })
-        contact.appendChild(discord[0])
-        contact.appendChild(githubContainer[0])
+        const contact = contactInfo(bar)
         bar.appendChild(contact)
+        const copyright = document.createElement("h1")
+        copyright.innerText = "Copyright bla bla bla 1984 \n this trademark is owned by bla bla bla brothers"
+        copyright.classList.add("text-center")
+        copyright.style.color = "rgb(107 114 128)"
+        bar.appendChild(copyright)
         this.appendChild(bar)
         if (document.body.getBoundingClientRect().height <= window.innerHeight) {
             bar.style.position = "absolute"
