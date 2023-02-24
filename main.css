@@ -34,11 +34,11 @@
     position:relative;
     animation-duration: 0.5s;
     animation-name: dotNormal;
-    left:0px;
+    left:2px;
 }
 .dot.active {
     position:relative;
-    left:30px;
+    left:28px;
     animation-duration: 0.5s;
     animation-name: dotActive;
 }
@@ -60,21 +60,21 @@
 @keyframes dotNormal {
     0% {
         position:relative;
-        left:30px;
+        left:28px;
     }
     100% {
         position:relative;
-        left:0px;
+        left:2px;
     }
 }
 @keyframes dotActive {
     0% {
         position:relative;
-        left:0px;
+        left:2px;
     }
     100% {
         position:relative;
-        left:30px;
+        left:28px;
     }
 }
 @keyframes normalTrans {
