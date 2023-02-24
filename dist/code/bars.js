@@ -149,6 +149,7 @@ class BottomBar extends HTMLElement {
         if (document.body.getBoundingClientRect().height <= window.innerHeight) {
             bar.style.position = "absolute"
             bar.style.bottom = "0px"
+            bar.classList.add("popdown")
         }
     }
 }

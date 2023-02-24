@@ -16,6 +16,11 @@
     animation-name: popup;
     animation-timing-function: linear;
 }
+.popdown {
+    animation-duration: 0.4s;
+    animation-name: popdown;
+    animation-timing-function: linear;
+}
 .toggle.normal{
     width:50px;
     height:25px;
@@ -124,5 +129,13 @@
     100% {
       transform:translateY(0);
       opacity: 1;
+    }
+}
+@keyframes popdown {
+    0%{
+        transform:translateY(100%);
+    }
+    100% {
+        transform:translateY(0);
     }
 }
