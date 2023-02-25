@@ -1,6 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+*{
+    transition: background-color 0.3s ease-in-out;
+    will-change: background-color;
+}
 .slideup{
     animation-duration: 2s;
     animation-name: slideup;
@@ -21,31 +25,24 @@
     animation-name: popdown;
     animation-timing-function: linear;
 }
-.toggle.normal{
+.toggle{
     width:50px;
     height:25px;
-    animation-duration: 1s;
-    animation-name: normalTrans;
     background-color:rgb(70, 70, 70);
+    transition: background-color 0.5s ease-in-out;
+    will-change: background-color;
 }
 .toggle.active{
-    width:50px;
-    height:25px;
-    animation-duration: 1s;
-    animation-name: activeTrans;
     background-color: rgb(42, 174, 245);
 }
-.dot.normal {
+.dot {
     position:relative;
-    animation-duration: 0.5s;
-    animation-name: dotNormal;
     left:2px;
+    transition: left 0.2s ease-out;
+    will-change: left;
 }
 .dot.active {
-    position:relative;
     left:28px;
-    animation-duration: 0.5s;
-    animation-name: dotActive;
 }
 .roboto {
     font-family: "Roboto", sans-serif;
