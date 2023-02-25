@@ -108,7 +108,7 @@ function contactInfo(bar) {
     const contact = document.createElement("div")
     contact.className = "flex flex-col h-auto roboto content-center items-center"
     contact.innerText = "Contact:"
-    const discord = createContainer("./svg/discord.svg", "capetaanal#2008")
+    const discord = createContainer("./svg/discord.svg", "capetaanal#1984")
     discord[1].classList.add("mb-2")
     discord[2].classList.add("mb-2")
     const githubContainer = createContainer("./svg/github-dark.svg", "CaioMGT", true, "https://github.com/CaioMGT")
@@ -131,7 +131,6 @@ function contactInfo(bar) {
         }
     })
     window.addEventListener("resize", function(){
-        console.log("your mom")
         if (document.body.getBoundingClientRect().height <= window.innerHeight) {
             bar.style.position = "absolute"
             bar.style.bottom = "0px"
