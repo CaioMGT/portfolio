@@ -153,8 +153,12 @@ class BottomBar extends HTMLElement {
         bar.style.height = "100px;"
         const contact = contactInfo(bar)
         bar.appendChild(contact)
-        const copyright = document.createElement("h1")
-        copyright.innerText = "Copyright bla bla bla 1984 \n this trademark is owned by bla bla bla brothers"
+        const info = document.createElement("h1")
+        info.innerText = "Fun Fact:\nI made this website to challenge myself and learn HTML and CSS, It's been a blast!\nHave any feedback? Tell me in my Discord DMs! I accept any friend requests."
+        info.classList.add("text-center")
+        bar.appendChild(info)
+        const copyright = document.createElement("div")
+        copyright.innerText = "\n\nCopyright bla bla bla 1984 \n this trademark is owned by bla bla bla brothers"
         copyright.classList.add("text-center")
         copyright.style.color = "rgb(107 114 128)"
         bar.appendChild(copyright)
