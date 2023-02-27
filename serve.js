@@ -1,3 +1,4 @@
+// This is unrelated to the website, it's just the web server I use when testing locally.
 const { match } = require('assert')
 var express = require('express')
 var app = express()
@@ -7,14 +8,6 @@ var server = app.listen(3000, function() {
 function getExtension(filename){
   return filename.split('.').pop();
 }
-/*app.get('/', (req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/html' })
-  fs.createReadStream("index.html").pipe(res)
-})
-app.get('/dist/output.css', (req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/css' })
-  fs.createReadStream("dist/output.css").pipe(res)  
-})*/
 app.all('*', (req, res) => {
   let extension = getExtension(req.url)
   let dontCheck = false

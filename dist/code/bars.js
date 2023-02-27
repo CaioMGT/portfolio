@@ -5,7 +5,6 @@ function createButton(text, href) {
     button.innerText = text
     button.href = href
     button.className = "roboto text-black dark:text-white top-button px-2 py-2"
-    // Buttons shouldn't be very tall, but idk how to fix that without messing up the text. Should look how to fix this later.
     button.style.borderRadius = "15px"
     button.addEventListener("click", () => {
         if (currentButton) {
@@ -17,7 +16,8 @@ function createButton(text, href) {
     return button
 }
 function updateSettings() {
-    // I'm inverting the colors on dark theme so the icon is more visible
+    // I'm inverting the colors on dark theme so the icon is more visible.
+    // By inverting it, the cog becomes white so it doesn't blend in anymore
     if (theme == Enum.DARK) {
         settings.style = "filter: invert(100%); cursor: pointer;"
     } else {
@@ -49,6 +49,7 @@ class Topbar extends HTMLElement {
         settings.addEventListener("click", () => {
             location.replace("/settings")
         })
+        // To understand why, read the comment in updateSettings
         updateSettings()
         document.documentElement.addEventListener("ThemeChange", updateSettings)
         this.buttons = {}
@@ -59,6 +60,9 @@ class Topbar extends HTMLElement {
         const portfolio = createButton("Portfolio", "/portfolio")
         bar.appendChild(portfolio)
         this.buttons.portfolio = portfolio
+        // This (and attributeChangedCallback) change what button is highlighted.
+        // It actually isn't automatic, I have to manually set the active-button
+        // per page. If someone knows a better way, hit me up on discord.
         if (this.hasAttribute("active-button")) {
             this.buttons[this.getAttribute('active-button')].classList.add("activeTop")
             currentButton = this.buttons[this.getAttribute('active-button')]
@@ -102,32 +106,35 @@ function createContainer(img, text, clickable, link) {
     }
     container.appendChild(logo)
     container.appendChild(desc)
-    return [container, logo, desc]
+    return container
 }
+// Since the bottom bar will probably have multiple complex divs,
+// I chose to separate each one into their own function,
+// so the connectedCallback doesn't get too crowded.
 function contactInfo(bar) {
     const contact = document.createElement("div")
     contact.className = "flex flex-col h-auto roboto content-center items-center"
     contact.innerText = "Contact:"
     const discord = createContainer("./svg/discord.svg", "capetaanal#1984")
-    discord[1].classList.add("mb-2")
-    discord[2].classList.add("mb-2")
-    const githubContainer = createContainer("./svg/github-dark.svg", "CaioMGT", true, "https://github.com/CaioMGT")
-    githubContainer[1].style.position = "relative"
-    githubContainer[1].style.right = "29px"
-    githubContainer[2].style.position = "relative"
-    githubContainer[2].style.right = "29px"
-    githubContainer[1].classList.add("mb-2")
-    githubContainer[2].classList.add("mb-2")
+    discord.children[0].classList.add("mb-2")
+    discord.children[0].classList.add("mb-2")
+    const github = createContainer("./svg/github-dark.svg", "CaioMGT", true, "https://github.com/CaioMGT")
+    github.children[0].style.position = "relative"
+    github.children[0].style.right = "29px"
+    github.children[1].style.position = "relative"
+    github.children[1].style.right = "29px"
+    github.children[0].classList.add("mb-2")
+    github.children[1].classList.add("mb-2")
     if (theme == Enum.DARK) {
-        githubContainer[1].src = "./svg/github-white.svg"
+        github.children[0].src = "./svg/github-white.svg"
     } else {
-        githubContainer[1].src = "./svg/github-dark.svg"
+        github.children[0].src = "./svg/github-dark.svg"
     }
     document.documentElement.addEventListener("ThemeChange", function(){
         if (theme == Enum.DARK) {
-            githubContainer[1].src = "./svg/github-white.svg"
+            github.children[0].src = "./svg/github-white.svg"
         } else {
-            githubContainer[1].src = "./svg/github-dark.svg"
+            github.children[0].src = "./svg/github-dark.svg"
         }
     })
     window.addEventListener("resize", function(){
@@ -138,8 +145,8 @@ function contactInfo(bar) {
             bar.style.position = "static"
         }
     })
-    contact.appendChild(discord[0])
-    contact.appendChild(githubContainer[0])
+    contact.appendChild(discord)
+    contact.appendChild(github)
     return contact
 }
 class BottomBar extends HTMLElement {
