@@ -18,13 +18,12 @@ function changetheme(themeChange, set) {
     if (set) {
         localStorage.setItem("Theme", themeChange)
     }
+    theme = themeChange
     // It's fine to do it this way since the html element has no other classes
     if (themeChange == Enum.LIGHT) {
         html.className = ""
-        theme = Enum.LIGHT
     } else {
         html.className = "dark"
-        theme = Enum.DARK
     }
     html.dispatchEvent(ThemeChange)
 }
