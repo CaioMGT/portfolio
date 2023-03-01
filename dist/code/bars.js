@@ -117,9 +117,9 @@ function contactInfo(bar) {
     contact.innerText = "Contact:"
     const discord = createContainer("./svg/discord.svg", "capetaanal#1984")
     discord.children[0].style.position = "relative"
-    discord.children[0].style.right = "5px"
+    discord.children[0].style.right = "4px"
     discord.children[1].style.position = "relative"
-    discord.children[1].style.right = "5px"
+    discord.children[1].style.right = "4px"
     discord.children[0].classList.add("mb-2")
     discord.children[1].classList.add("mb-2")
     const github = createContainer("./svg/github-dark.svg", "CaioMGT", true, "https://github.com/CaioMGT")
