@@ -116,25 +116,35 @@ function contactInfo(bar) {
     contact.className = "flex flex-col h-auto roboto content-center items-center"
     contact.innerText = "Contact:"
     const discord = createContainer("./svg/discord.svg", "capetaanal#1984")
+    discord.children[0].style.position = "relative"
+    discord.children[0].style.right = "5px"
+    discord.children[1].style.position = "relative"
+    discord.children[1].style.right = "5px"
     discord.children[0].classList.add("mb-2")
-    discord.children[0].classList.add("mb-2")
+    discord.children[1].classList.add("mb-2")
     const github = createContainer("./svg/github-dark.svg", "CaioMGT", true, "https://github.com/CaioMGT")
     github.children[0].style.position = "relative"
-    github.children[0].style.right = "29px"
+    github.children[0].style.right = "32px"
     github.children[1].style.position = "relative"
-    github.children[1].style.right = "29px"
+    github.children[1].style.right = "32px"
     github.children[0].classList.add("mb-2")
     github.children[1].classList.add("mb-2")
+    const email = createContainer("./svg/email.svg", "caio@caiomgt.com", true, "mailto:caio@caiomgt.com")
+    email.children[1].classList.remove("ml-1")
     if (theme == Enum.DARK) {
         github.children[0].src = "./svg/github-white.svg"
+        email.children[0].style.filter = "invert(100%)"
     } else {
         github.children[0].src = "./svg/github-dark.svg"
+        email.children[0].style.filter = ""
     }
     document.documentElement.addEventListener("ThemeChange", function(){
         if (theme == Enum.DARK) {
             github.children[0].src = "./svg/github-white.svg"
+            email.children[0].style.filter = "invert(100%)"
         } else {
             github.children[0].src = "./svg/github-dark.svg"
+            email.children[0].style.filter = ""
         }
     })
     window.addEventListener("resize", function(){
@@ -147,6 +157,7 @@ function contactInfo(bar) {
     })
     contact.appendChild(discord)
     contact.appendChild(github)
+    contact.appendChild(email)
     return contact
 }
 class BottomBar extends HTMLElement {
