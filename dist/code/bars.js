@@ -35,7 +35,7 @@ class Topbar extends HTMLElement {
         ready = true
         // Remember: only parent elements in connectedCallback
         const bar = document.createElement("div")
-        bar.className = "bg-neutral-100 dark:bg-neutral-900 w-full popup flex flex-row-reverse gap-x-6 roboto"
+        bar.className = "bg-neutral-100 dark:bg-neutral-900 w-full popup flex flex-row-reverse gap-x-6 roboto z-index:100"
         bar.style = `
             height: 40px;
             position: -webkit-sticky; /* safari */
@@ -113,7 +113,7 @@ function createContainer(img, text, clickable, link) {
 // so the connectedCallback doesn't get too crowded.
 function contactInfo(bar) {
     const contact = document.createElement("div")
-    contact.className = "flex flex-col h-auto roboto content-center items-center"
+    contact.className = "flex flex-col h-auto roboto content-center items-center z-index:100"
     contact.innerText = "Contact:"
     const discord = createContainer("./svg/discord.svg", "capetaanal#1984")
     discord.children[0].style.position = "relative"
