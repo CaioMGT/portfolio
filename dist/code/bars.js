@@ -1,11 +1,12 @@
 // I want this to be easily re-usable in every page (maybe other than in the 404 page?)
 let settings
-function createButton(text, href) {
+function createButton(text, href, order) {
     const button = document.createElement("a")
     button.innerText = text
     button.href = href
     button.className = "roboto text-black dark:text-white top-button px-2 py-2"
     button.style.borderRadius = "15px"
+    button.tabIndex = order
     button.addEventListener("click", () => {
         if (currentButton) {
             currentButton.classList.remove("activeTop")
@@ -34,6 +35,7 @@ class Topbar extends HTMLElement {
     connectedCallback() {
         ready = true
         // Remember: only parent elements in connectedCallback
+        let tabIndex = 1
         const bar = document.createElement("div")
         bar.className = "bg-neutral-100 dark:bg-neutral-900 w-full popup flex flex-row-reverse gap-x-6 roboto"
         bar.style = `
@@ -47,6 +49,8 @@ class Topbar extends HTMLElement {
         settings.src = "./svg/cog.svg"
         settings.classList.add("mr-4")
         settings.classList.add("pt-1", "pb-1")
+        settings.tabIndex = tabIndex
+        tabIndex++
         settings.addEventListener("click", () => {
             location.replace("/settings")
         })
@@ -54,12 +58,20 @@ class Topbar extends HTMLElement {
         updateSettings()
         document.documentElement.addEventListener("ThemeChange", updateSettings)
         this.buttons = {}
-        const aboutme = createButton("About Me", "/")
+        const aboutme = createButton("About Me", "/", tabIndex)
+        tabIndex++
+
+        this.buttons.aboutme = aboutme
+        const portfolio = createButton("Portfolio", "/portfolio", tabIndex)
+        tabIndex++
         bar.appendChild(settings)
         bar.appendChild(aboutme)
-        this.buttons.aboutme = aboutme
-        const portfolio = createButton("Portfolio", "/portfolio")
         bar.appendChild(portfolio)
+        settings.addEventListener("keydown", function(event) {
+            if (event.key == "Enter") {
+                location.replace("/settings")
+            }
+        })
         this.buttons.portfolio = portfolio
         // This (and attributeChangedCallback) change what button is highlighted.
         // It actually isn't automatic, I have to manually set the active-button
