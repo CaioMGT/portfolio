@@ -35,11 +35,12 @@ class Topbar extends HTMLElement {
         ready = true
         // Remember: only parent elements in connectedCallback
         const bar = document.createElement("div")
-        bar.className = "bg-neutral-100 dark:bg-neutral-900 w-full popup flex flex-row-reverse gap-x-6 roboto z-index:100"
+        bar.className = "bg-neutral-100 dark:bg-neutral-900 w-full popup flex flex-row-reverse gap-x-6 roboto"
         bar.style = `
             height: 40px;
             position: -webkit-sticky; /* safari */
             position: sticky;
+            z-index:100;
             top: 0;
             `
         settings = document.createElement("img")

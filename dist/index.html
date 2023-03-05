@@ -18,6 +18,7 @@ files are humongous, my code is actually way at the bottom. If you want a link, 
   <script src="./code/bars.js"></script>
   <script>
     window.onload = () => {
+      // Set age
       const birth = new Date("2008-04-10")
       const current = new Date()
       let age = current.getFullYear() - birth.getFullYear()
@@ -29,6 +30,15 @@ files are humongous, my code is actually way at the bottom. If you want a link, 
         console.log("changed age to " + age)
       }
       document.getElementById("age").innerText = age
+
+      // Disable flexbox if display is of low width (mobile)
+      // Improves readability.
+      if (window.innerWidth <= 720) {
+        for (div of document.getElementsByClassName("disableIfLowWidth")) {
+          div.style.display = "block"
+          div.children[1].style.textAlign = "left"
+        }
+      }
     }
   </script>
   <script src="./code/fadeInOnScroll.js"></script>
@@ -79,7 +89,7 @@ files are humongous, my code is actually way at the bottom. If you want a link, 
     <!--A fade in section only pops up when it is in view, the class is what handles that action. If you want to take a look at how it works, check fadeInOnScroll.js-->
     <div class="fade-in-section">
       <a href="https://www.roblox.com/groups/5866725/DevNet-Studios#!/about" target="_blank" class="roboto text-4xl text-black dark:text-white pt-4 text-center ml-8">DevNet Studios</a>
-      <div class="flex flex-row pt-2 px-10 text-left">
+      <div class="flex flex-row pt-2 px-10 text-left disableIfLowWidth">
         <img class="h-[300px] w-[400px] shadow-light md:h-[200px] md:w-[266.666667px]" src="./img/devnetlogo.png" alt="DevNet Studios Logo" >
         <div class="flex flex-col px-2"> <!--I need to create another flex for the text so they can be vertical-->
           <h3 class="roboto"> <span class="font-bold"> Position:</span> Creator, Lead Developer</h3> 
@@ -91,7 +101,7 @@ files are humongous, my code is actually way at the bottom. If you want a link, 
     </div> 
     <div class="fade-in-section text-right">
       <a href="https://www.roblox.com/groups/16560176/KnockOff-Studio#!/about" target="_blank" class="roboto text-4xl text-black dark:text-white mr-8">KnockOff Studio</a>
-      <div class="flex flex-row-reverse pt-2 px-10"> 
+      <div class="flex flex-row-reverse pt-2 px-10 disableIfLowWidth"> 
         <img class="h-[210.5px] w-[400px] shadow-light md:h-[140.333333px] md:w-[266.666667px]" src="./img/knockofflogo.png" alt="KnockOff Studios Logo">
         <div class="flex flex-col px-2">
           <h3 class="roboto"> <span class="font-bold">Position:</span> Co-Founder, Lead Programmer</h3>
