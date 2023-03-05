@@ -9,6 +9,7 @@
                 will-change: background-color;
             }
         </style>
+        <script src="./code/toggle.js"></script>
         <script src="./code/thememgr.js"></script>
         <script src="./code/themeswitcher.js"></script>
         <script src="./code/bars.js"></script>
@@ -26,9 +27,9 @@
                 <h1 class='pt-4 roboto text-black dark:text-white text-center text-4xl font-thin' draggable="false">Settings</h1>
                 <div>
                     <!--
-                        To make a toggle button, all you need is the toggle class. 
-                        To activate it, use the active class while it has the toggle class. 
-                        For the dot, you need the dot class and to activate it, the active class.
+                        To make a toggle button, all you need is the toggle class and
+                        register it in the addToggle(element, defaultValue, callback) function.
+                        To see an example, check the themeswitcher.js file.
                     -->
                     Enable Light Theme <button type="button" style="display:inline" id="theme-switcher" class="toggle normal mt-2 rounded-full"><div class="dot normal rounded-full bg-white w-[20px] h-[20px]"></div></button>
                 </div>
