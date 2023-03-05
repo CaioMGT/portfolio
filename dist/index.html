@@ -39,6 +39,21 @@ files are humongous, my code is actually way at the bottom. If you want a link, 
           div.style.textAlign = "left"
         }
       }
+      window.addEventListener("resize", function() {
+        for (div of document.getElementsByClassName("disableIfLowWidth")) {
+            if (window.innerWidth <= 720) {
+              div.style.display = "block"
+              div.style.textAlign = "left"
+            } else {
+              div.style.display = "flex"
+              if (div.id == "devnet") {
+                div.style.textAlign = "left"
+              } else {
+                div.style.textAlign = "right"
+              }
+            }
+          }
+        })
     }
   </script>
   <script src="./code/fadeInOnScroll.js"></script>
@@ -89,7 +104,7 @@ files are humongous, my code is actually way at the bottom. If you want a link, 
     <!--A fade in section only pops up when it is in view, the class is what handles that action. If you want to take a look at how it works, check fadeInOnScroll.js-->
     <div class="fade-in-section">
       <a href="https://www.roblox.com/groups/5866725/DevNet-Studios#!/about" target="_blank" class="roboto text-4xl text-black dark:text-white pt-4 text-center ml-8">DevNet Studios</a>
-      <div class="flex flex-row pt-2 px-10 text-left disableIfLowWidth">
+      <div class="flex flex-row pt-2 px-10 text-left disableIfLowWidth" id="devnet">
         <img class="h-[300px] w-[400px] shadow-light md:h-[200px] md:w-[266.666667px]" src="./img/devnetlogo.png" alt="DevNet Studios Logo" >
         <div class="flex flex-col px-2"> <!--I need to create another flex for the text so they can be vertical-->
           <h3 class="roboto"> <span class="font-bold"> Position:</span> Creator, Lead Developer</h3> 
