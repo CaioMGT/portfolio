@@ -1,34 +1,32 @@
 let buttons = []
-function addToggle(button, defaultValue, callback) {
-    buttons[button] = callback
-    console.log("adding event listener to " + button.localName)
+function addToggle(eee, defaultValue, callback) {
+    buttons[eee.id] = callback
+    console.log("adding event listener to " + eee.localName)
     if (defaultValue) {
-        button.firstElementChild.classList.add("active")
-        button.firstElementChild.classList.remove("normal")
-        button.classList.remove("normal")
-        button.classList.add("active")
-        buttons[button](true)
+        eee.firstElementChild.classList.add("active")
+        eee.firstElementChild.classList.remove("normal")
+        eee.classList.remove("normal")
+        eee.classList.add("active")
     } else {
-        button.firstElementChild.classList.remove("active")
-        button.firstElementChild.classList.add("normal")
-        button.classList.remove("active")
-        button.classList.add("normal")
-        buttons[button](false)
+        eee.firstElementChild.classList.remove("active")
+        eee.firstElementChild.classList.add("normal")
+        eee.classList.remove("active")
+        eee.classList.add("normal")
     }
-    callback(defaultValue)
-    button.addEventListener("click", function(){
-        if (button.classList.contains("active")) {
-            button.firstElementChild.classList.remove("active")
-            button.firstElementChild.classList.add("normal")
-            button.classList.remove("active")
-            button.classList.add("normal")
-            buttons[button](false)
+    buttons[eee.id](defaultValue)
+    eee.addEventListener("click", function(){
+        if (eee.classList.contains("active")) {
+            eee.firstElementChild.classList.remove("active")
+            eee.firstElementChild.classList.add("normal")
+            eee.classList.remove("active")
+            eee.classList.add("normal")
+            buttons[eee.id](false)
         } else {
-            button.firstElementChild.classList.add("active")
-            button.firstElementChild.classList.remove("normal")
-            button.classList.remove("normal")
-            button.classList.add("active")
-            buttons[button](true)
+            eee.firstElementChild.classList.add("active")
+            eee.firstElementChild.classList.remove("normal")
+            eee.classList.remove("normal")
+            eee.classList.add("active")
+            buttons[eee.id](true)
         }
     })
 }
