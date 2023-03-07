@@ -50,6 +50,7 @@ class Topbar extends HTMLElement {
         settings.classList.add("mr-4")
         settings.classList.add("pt-1", "pb-1")
         settings.tabIndex = tabIndex
+        settings.alt = "Settings"
         tabIndex++
         settings.addEventListener("click", () => {
             location.replace("/settings")
@@ -102,6 +103,7 @@ function createContainer(img, text, clickable, link) {
     logo.style.display = "inline"
     logo.style.height = "25px"
     logo.style.width = "25px"
+    logo.alt=""
     const desc = document.createElement("h1")
     desc.innerText = text
     desc.style.display = "inline"
