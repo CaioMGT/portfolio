@@ -192,7 +192,8 @@ const facts = [
     "This website is entirely open source. \n If you want to check out the code behind it, the github is \n https://github.com/CaioMGT/caiomgt.github.io",
     "I'm not entirely sure why I made this",
     "These facts aren't confirmed true.",
-    "I don't know what I'm doing!"
+    "I don't know what I'm doing!",
+    "If you see this, type 'banana' in my discord dms"
 ]
 facts[facts.length + 1] = "There are currently " + (facts.length + 1) + " fun facts." // I have to add this one in after because I can't access the array's length while it's being declared
 function rand(max) {
@@ -213,10 +214,6 @@ class BottomBar extends HTMLElement {
         info.innerText = "Fun Fact:\n" + facts[rand(facts.length)]
         info.classList.add("text-center")
         bar.appendChild(info)
-        const copyright = document.createElement("div")
-        copyright.innerText = "\n\nCopyright bla bla bla 1984 \n this trademark is owned by bla bla bla brothers"
-        copyright.classList.add("text-center")
-        copyright.style.color = "rgb(107 114 128)"
         bar.appendChild(copyright)
         this.appendChild(bar)
         if (document.body.getBoundingClientRect().height <= window.innerHeight) {
