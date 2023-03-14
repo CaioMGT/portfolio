@@ -49,6 +49,9 @@
 .glow {
     text-shadow: 2px 2px 50px rgb(255, 255, 255);
 }
+.glowBlue {
+    text-shadow: 2px 2px 50px rgb(96, 165, 250);
+}
 .activeTop {
     background-color: rgba(156, 163, 175, 0.2);
 }

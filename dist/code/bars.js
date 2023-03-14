@@ -5,7 +5,7 @@ function createButton(text, href, order) {
     button.innerText = text
     button.href = href
     button.className = "roboto text-black dark:text-white top-button px-2 py-2"
-    button.style.borderRadius = "15px"
+    button.style.borderRadius = "12px"
     button.tabIndex = order
     button.addEventListener("click", () => {
         if (currentButton) {
