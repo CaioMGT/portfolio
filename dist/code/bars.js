@@ -175,6 +175,30 @@ function contactInfo(bar) {
     contact.appendChild(email)
     return contact
 }
+const facts = [
+    "I made this website to challenge myself and learn HTML and CSS, It's been a blast!", 
+    "Have any feedback? Tell me in my Discord DMs! I accept any friend requests.",
+    "This website is built from the ground up manually, using TailwindCSS",
+    "I can't tie my shoes!",
+    "The age on the About Me page automatically updates when it's my birthday!",
+    "I try to add new things often, check back every once in a while :)",
+    "I had no prior experience making websites before this",
+    "My timezone is GMT -3",
+    "NullPointerException... just kidding",
+    "This is a fact!",
+    "This isn't a fact. (or is it?)",
+    "I live in Brazil.",
+    "I'm taking you to Brazil",
+    "This website is entirely open source. \n If you want to check out the code behind it, the github is \n https://github.com/CaioMGT/caiomgt.github.io",
+    "I'm not entirely sure why I made this",
+    "These facts aren't confirmed true.",
+    "I don't know what I'm doing!"
+]
+facts[facts.length + 1] = "There are currently " + (facts.length + 1) + " fun facts." // I have to add this one in after because I can't access the array's length while it's being declared
+function rand(max) {
+    return Math.floor(Math.random() * max) 
+}
+
 class BottomBar extends HTMLElement {
     constructor() {
         super()
@@ -186,7 +210,7 @@ class BottomBar extends HTMLElement {
         const contact = contactInfo(bar)
         bar.appendChild(contact)
         const info = document.createElement("h1")
-        info.innerText = "Fun Fact:\nI made this website to challenge myself and learn HTML and CSS, It's been a blast!\nHave any feedback? Tell me in my Discord DMs! I accept any friend requests."
+        info.innerText = "Fun Fact:\n" + facts[rand(facts.length)]
         info.classList.add("text-center")
         bar.appendChild(info)
         const copyright = document.createElement("div")
