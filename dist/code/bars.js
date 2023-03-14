@@ -214,7 +214,6 @@ class BottomBar extends HTMLElement {
         info.innerText = "Fun Fact:\n" + facts[rand(facts.length)]
         info.classList.add("text-center")
         bar.appendChild(info)
-        bar.appendChild(copyright)
         this.appendChild(bar)
         if (document.body.getBoundingClientRect().height <= window.innerHeight) {
             bar.style.position = "absolute"
