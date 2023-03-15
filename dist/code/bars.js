@@ -97,7 +97,8 @@ class Topbar extends HTMLElement {
 customElements.define("top-nav", Topbar)
 function createContainer(img, text, clickable, link) {
     const container = document.createElement("div")
-    container.style.textALign = "left"
+    container.style.width = "200px" //hopefully this won't break in small screens
+    container.style.textAlign = "left"
     const logo = document.createElement("img")
     logo.src = img
     logo.style.display = "inline"
@@ -131,21 +132,8 @@ function contactInfo(bar) {
     contact.className = "flex flex-col h-auto roboto content-center items-center z-index:100"
     contact.innerText = "Contact:"
     const discord = createContainer("./svg/discord.svg", "capetaanal#1984")
-    discord.children[0].style.position = "relative"
-    discord.children[0].style.right = "4px"
-    discord.children[1].style.position = "relative"
-    discord.children[1].style.right = "4px"
-    discord.children[0].classList.add("mb-2")
-    discord.children[1].classList.add("mb-2")
     const github = createContainer("./svg/github-dark.svg", "CaioMGT", true, "https://github.com/CaioMGT")
-    github.children[0].style.position = "relative"
-    github.children[0].style.right = "32px"
-    github.children[1].style.position = "relative"
-    github.children[1].style.right = "32px"
-    github.children[0].classList.add("mb-2")
-    github.children[1].classList.add("mb-2")
     const email = createContainer("./svg/email.svg", "caio@caiomgt.com", true, "mailto:caio@caiomgt.com")
-    email.children[1].classList.remove("ml-1")
     if (theme == Enum.DARK) {
         github.children[0].src = "./svg/github-white.svg"
         email.children[0].style.filter = "invert(100%)"
