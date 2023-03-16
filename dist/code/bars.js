@@ -181,7 +181,13 @@ const facts = [
     "I'm not entirely sure why I made this",
     "These facts aren't confirmed true.",
     "I don't know what I'm doing!",
-    "If you see this, type 'banana' in my discord dms"
+    "If you see this, type 'banana' in my discord dms",
+    "Made in Brazil!",
+    "I am very picky about what I eat",
+    "I don't have a life!",
+    "Procastination is a big issue for me",
+    "Brazil",
+    "If I could, I would move to Canada"
 ]
 facts[facts.length + 1] = "There are currently " + (facts.length + 1) + " fun facts." // I have to add this one in after because I can't access the array's length while it's being declared
 function rand(max) {
