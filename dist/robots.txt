@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /nocrawl/
+Sitemap: https://www.caiomgt.com/sitemap.txt
