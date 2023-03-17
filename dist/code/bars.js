@@ -46,7 +46,7 @@ class Topbar extends HTMLElement {
             top: 0;
             `
         settings = document.createElement("img")
-        settings.src = "./svg/cog.svg"
+        settings.src = "/svg/cog.svg"
         settings.classList.add("mr-4")
         settings.classList.add("pt-1", "pb-1")
         settings.tabIndex = tabIndex
@@ -131,22 +131,22 @@ function contactInfo(bar) {
     const contact = document.createElement("div")
     contact.className = "flex flex-col h-auto roboto content-center items-center z-index:100"
     contact.innerText = "Contact:"
-    const discord = createContainer("./svg/discord.svg", "capetaanal#1984")
-    const github = createContainer("./svg/github-dark.svg", "CaioMGT", true, "https://github.com/CaioMGT")
-    const email = createContainer("./svg/email.svg", "caio@caiomgt.com", true, "mailto:caio@caiomgt.com")
+    const discord = createContainer("/svg/discord.svg", "capetaanal#1984")
+    const github = createContainer("/svg/github-dark.svg", "CaioMGT", true, "https://github.com/CaioMGT")
+    const email = createContainer("/svg/email.svg", "caio@caiomgt.com", true, "mailto:caio@caiomgt.com")
     if (theme == Enum.DARK) {
-        github.children[0].src = "./svg/github-white.svg"
+        github.children[0].src = "/svg/github-white.svg"
         email.children[0].style.filter = "invert(100%)"
     } else {
-        github.children[0].src = "./svg/github-dark.svg"
+        github.children[0].src = "/svg/github-dark.svg"
         email.children[0].style.filter = ""
     }
     document.documentElement.addEventListener("ThemeChange", function(){
         if (theme == Enum.DARK) {
-            github.children[0].src = "./svg/github-white.svg"
+            github.children[0].src = "/svg/github-white.svg"
             email.children[0].style.filter = "invert(100%)"
         } else {
-            github.children[0].src = "./svg/github-dark.svg"
+            github.children[0].src = "/svg/github-dark.svg"
             email.children[0].style.filter = ""
         }
     })
