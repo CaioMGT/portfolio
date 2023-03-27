@@ -187,9 +187,16 @@ const facts = [
     "I don't have a life!",
     "Procastination is a big issue for me",
     "Brazil",
-    "If I could, I would move to Canada"
+    "If I could, I would move to Canada",
+    "My eye color changes between green and blue",
+    "Found any bugs? Be sure to tell me in my dms",
+    "I am not healthy",
+    "My computer only has integrated graphics",
+    "I wish I had a CNC machine or a 3D printer",
+    "We ran out of facts"
 ]
 facts[facts.length + 1] = "There are currently " + (facts.length + 1) + " fun facts." // I have to add this one in after because I can't access the array's length while it's being declared
+facts[facts.length + 1] = "There is a " + Math.floor((1 / facts.length) * 100) + "% chance of getting this fact"
 function rand(max) {
     return Math.floor(Math.random() * max) 
 }
