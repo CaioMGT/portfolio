@@ -65,9 +65,12 @@ class Topbar extends HTMLElement {
         this.buttons.aboutme = aboutme
         const portfolio = createButton("Portfolio", "/portfolio", tabIndex)
         tabIndex++
+        const blog = createButton("Blog", "/blog", tabIndex)
+        this.buttons.blog = blog
         bar.appendChild(settings)
         bar.appendChild(aboutme)
         bar.appendChild(portfolio)
+        bar.appendChild(blog)
         settings.addEventListener("keydown", function(event) {
             if (event.key == "Enter") {
                 location.replace("/settings")
@@ -193,9 +196,9 @@ const facts = [
     "I am not healthy",
     "My computer only has integrated graphics",
     "I wish I had a CNC machine or a 3D printer",
-    "We ran out of facts"
+    "We ran out of facts."
 ]
-facts[facts.length] = "There are currently " + (facts.length + 1) + " fun facts." // I have to add this one in after because I can't access the array's length while it's being declared
+facts[facts.length] = "There are currently " + (facts.length + 2) + " fun facts." // I have to add this one in after because I can't access the array's length while it's being declared
 facts[facts.length] = "There is a " + Math.floor((1 / facts.length) * 100) + "% chance of getting this fact"
 function rand(max) {
     return Math.floor(Math.random() * max) 
