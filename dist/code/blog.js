@@ -1,5 +1,6 @@
-const getPosts = new XMLHttpRequest()
-let postList
+function fetchThing(url, code) {
+    fetch(url).then((res) => res.json()).then(code)
+}
 function createPostPreview(post) {
     const bg = document.createElement("div")
     const title = document.createElement("h2")
@@ -8,10 +9,8 @@ function createPostPreview(post) {
     bg.appendChild(title)
     return bg
 }
-getPosts.open("POST", "https://api.caiomgt.com")
-getPosts.send(JSON.stringify({"type": "list"}))
-getPosts.onload = function() {
-    postList = JSON.parse(getPosts.responseText).posts
+fetchThing("https://api.caiomgt.com/getPosts", function(json) {
+    const postList = json.post
     console.log(postList)
     let box = document.getElementById("postBox")
     for (post of postList) {
@@ -23,4 +22,5 @@ getPosts.onload = function() {
             box.appendChild(postThing)
         }
     }
-}
+})
+
