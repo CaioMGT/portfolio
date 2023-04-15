@@ -1,6 +1,5 @@
 async function summonPosts() {
     const postList= (await (await fetch("https://api.caiomgt.com/getPosts")).json()).post;
-    console.log(postList)
     const box = document.getElementById("postBox")
     for (post of postList) {
         if (post.id != null) {
@@ -13,11 +12,23 @@ async function summonPosts() {
     }
 }
 async function checkIfAdmin(password) {
-    const response = await fetch("https://api.caiomgt.com/validatePassword", {method: "POST", headers:{"Content-Type": "application/json"}, body:JSON.stringify({auth: password})})
+    const hash = await getSHA256Hash(password)
+    console.log(hash)
+    const response = await fetch("https://api.caiomgt.com/validatePassword", {method: "POST", headers:{"Content-Type": "application/json"}, body:JSON.stringify({auth: hash})})
     console.log(response.body)
     const json = await response.json()
+    console.log(json)
     return json.auth 
 }
+const getSHA256Hash = async (input) => {
+    const textAsBuffer = new TextEncoder().encode(input);
+    const hashBuffer = await window.crypto.subtle.digest("SHA-256", textAsBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hash = hashArray
+      .map((item) => item.toString(16).padStart(2, "0"))
+      .join("");
+    return hash;
+};
 function createPostPreview(post) {
     const bg = document.createElement("div")
     const title = document.createElement("h2")
@@ -31,7 +42,8 @@ summonPosts()
 if (localStorage.getItem("password")) {
     checkIfAdmin(localStorage.getItem('password')).then((thing) => {
         if (thing){
-            console.log("your mom")
+            // Is admin, un-hide create / delete post buttons.
+
         } else {
             console.log("not your mom")
         }
