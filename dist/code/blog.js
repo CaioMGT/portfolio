@@ -43,7 +43,7 @@ if (localStorage.getItem("password")) {
     checkIfAdmin(localStorage.getItem('password')).then((thing) => {
         if (thing){
             // Is admin, un-hide create / delete post buttons.
-
+            document.getElementById("createPost").classList.remove("hidden")
         } else {
             console.log("not your mom")
         }
