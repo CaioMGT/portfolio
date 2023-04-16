@@ -17,19 +17,21 @@
         <title>Blog</title>
         <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     </head>
-    <body class="bg-neutral-300 dark:bg-neutral-800 roboto text-black dark:text-white">
-        <div class="flex flex-row items-center text-center">
+    <body class="bg-neutral-300 dark:bg-neutral-800 roboto text-black dark:text-white glowBlue">
+        <h1 class="text-center text-blue-400 dark:text-blue-300 text-5xl font-thin">Create Post</h1>
+        <span>Title:</span><input class="bg-neutral-400 dark:bg-neutral-900 resize-none" id="title"></input> <br>
+        <span>Description:</span><input class="bg-neutral-400 dark:bg-neutral-900 resize-none" id="desc"></input>
+        <div class="flex flex-row items-center content-center text-center">
             <div class="p-2 w-2/5 h-full">
                 <span class="py-12 roboto text-blue-400 dark:text-blue-300 text-center text-5xl font-thin glowBlue fadein ">Post Maker</span>
-                <textarea class="p-[10px] bg-neutral-500 dark:bg-neutral-900 resize-none  w-full h-[60vh]" id="editBox"></textarea>
+                <textarea class="p-[10px] bg-neutral-400 dark:bg-neutral-900 resize-none  w-full h-[60vh]" id="editBox"></textarea>
             </div>
             <div class="p-4 w-2/5 h-full">
                 <span class="py-12 roboto text-blue-400 dark:text-blue-300 text-center text-5xl font-thin glowBlue fadein ">Preview</span>
-                <div class="w-full h-[60vh] bg-neutral-500 dark:bg-neutral-900 overflow-auto" id="previewBox">
-
-                </div>
+                <!--The preview is being handled in the createPost.js file, using marked.-->
+                <div class="w-full h-[60vh] bg-neutral-400 dark:bg-neutral-900 overflow-auto" id="previewBox"></div>
             </div>
         </div>
-        <button class="bg-blue-400 py-2 px-8 rounded-full">Submit</button>
+        <button class="bg-blue-400 py-2 px-8 rounded-full" id="submit">Submit</button>
     </body>
 </html>
