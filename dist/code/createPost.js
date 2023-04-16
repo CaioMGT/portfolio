@@ -22,7 +22,7 @@ document.getElementById("submit").addEventListener("click", function(){
     const content = editBox.value
     const postDate = new Date()
     let id 
-    fetch("http://localhost:8000/getPosts").then(function(val) {
+    fetch("https://api.caiomgt.com/getPosts").then(function(val) {
         val.json().then(function(json){
             console.log(json)
             let big = 0
@@ -36,7 +36,7 @@ document.getElementById("submit").addEventListener("click", function(){
             getSHA256Hash(localStorage.getItem("password")).then(function(password){
                 const json = JSON.stringify({id:id, title:title, desc:desc, content:content, postDate:postDate, auth:password})
                 console.log(json)
-                fetch("http://localhost:8000/publishPost", {method:"POST", headers:{"Content-Type" : "application/json", body:json}}).then(
+                fetch("https://api.caiomgt.com/publishPost", {method:"POST", headers:{"Content-Type" : "application/json"}, body:json}).then(
                     (val) => {
                     val.json().then(function(json){
                         console.log(json)
