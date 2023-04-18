@@ -8,7 +8,6 @@ async function summonPosts() {
       // for some reason the response is returning a random prototype
       // along with the posts so i have to do this.
       const postThing = createPostPreview(post);
-      console.log(postThing);
       box.appendChild(postThing);
     }
   }
@@ -38,9 +37,10 @@ const getSHA256Hash = async (input) => {
 };
 function createPostPreview(post) {
   const bg = document.createElement("div");
-  const title = document.createElement("h2");
+  const title = document.createElement("a");
   title.className = "title";
   title.innerText = post.title;
+  title.href = "/blog/post?id=" + post._id;
   bg.appendChild(title);
   return bg;
 }

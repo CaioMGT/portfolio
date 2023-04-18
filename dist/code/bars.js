@@ -66,7 +66,7 @@ class Topbar extends HTMLElement {
     this.buttons.aboutme = aboutme;
     const portfolio = createButton("Portfolio", "/portfolio", tabIndex);
     tabIndex++;
-    const blog = createButton("Blog", "/blog", tabIndex);
+    const blog = createButton("Blog", "/blog/index", tabIndex);
     this.buttons.blog = blog;
     bar.appendChild(settings);
     bar.appendChild(aboutme);

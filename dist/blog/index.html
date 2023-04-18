@@ -1,0 +1,43 @@
+<html class="dark" lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="application-name" content="Blog" />
+    <meta name="description" content="My personal blog." />
+    <meta name="author" content="Caio" />
+    <meta
+      name="keywords"
+      content="CaioMGT, Caio, Programming, Roblox, Lua, C#, Python, Programmer, Portfolio, AboutMe"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/main.css" />
+    <link rel="stylesheet" href="/blog.css" />
+    <script src="/code/thememgr.js"></script>
+    <script src="/code/bars.js"></script>
+    <script src="/code/blog/blog.js" defer></script>
+    <title>Blog</title>
+  </head>
+  <body
+    class="bg-neutral-300 dark:bg-neutral-800 roboto text-black dark:text-white"
+  >
+    <top-nav active-button="blog"></top-nav>
+    <h1
+      class="py-8 roboto text-blue-400 dark:text-blue-300 text-center text-7xl font-thin glowBlue fadein"
+      draggable="false"
+    >
+      Blog
+    </h1>
+    <div class="flex flex-col justify-center items-center">
+      <a id="createPost" class="hidden" href="/blog/createPost">Create Post</a>
+      <div
+        class="rounded-md roboto w-1/2 bg-neutral-100 dark:bg-neutral-900 dark:text-white text-center fadein flex grid-flow-row"
+        id="postBox"
+      ></div>
+    </div>
+    <bottom-bar></bottom-bar>
+  </body>
+</html>
