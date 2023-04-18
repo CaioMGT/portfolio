@@ -43,6 +43,7 @@ document.getElementById("submit").addEventListener("click", function () {
         }).then((val) => {
           val.json().then(function (json) {
             console.log(json);
+            document.getElementById("popup").classList.add("open");
           });
         });
       });
