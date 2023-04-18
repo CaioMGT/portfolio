@@ -4,7 +4,7 @@ async function summonPosts() {
   ).post;
   const box = document.getElementById("postBox");
   for (post of postList) {
-    if (post.id != null) {
+    if (post._id != null) {
       // for some reason the response is returning a random prototype
       // along with the posts so i have to do this.
       const postThing = createPostPreview(post);
@@ -13,6 +13,7 @@ async function summonPosts() {
     }
   }
 }
+summonPosts();
 async function checkIfAdmin(password) {
   const hash = await getSHA256Hash(password);
   console.log(hash);
@@ -43,7 +44,6 @@ function createPostPreview(post) {
   bg.appendChild(title);
   return bg;
 }
-summonPosts();
 
 if (localStorage.getItem("password")) {
   checkIfAdmin(localStorage.getItem("password")).then((thing) => {
