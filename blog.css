@@ -12,3 +12,9 @@
 .popup.open {
   top: 0px;
 }
+.deleteButton {
+  background-color: red;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 20px;
+}

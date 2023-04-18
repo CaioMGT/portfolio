@@ -1,3 +1,4 @@
+let isAdmin = false;
 async function summonPosts() {
   const postList = (
     await (await fetch("https://api.caiomgt.com/getPosts")).json()
@@ -36,13 +37,44 @@ const getSHA256Hash = async (input) => {
     .join("");
   return hash;
 };
+async function deletePost(postId) {
+  const response = await fetch("https://api.caiomgt.com/removePost", {
+    headers: { "Content-Type": "application/json" },
+    method: "POST",
+    body: JSON.stringify({
+      id: postId,
+      auth: await getSHA256Hash(localStorage.getItem("password")),
+    }),
+  });
+  const json = await response.json();
+  return json.auth;
+}
 function createPostPreview(post) {
   const bg = document.createElement("div");
   const title = document.createElement("a");
   title.className = "title";
   title.innerText = post.title;
   title.href = "/blog/post?id=" + post._id;
+  const desc = document.createElement("h2");
+  desc.innerText = post.desc;
+  desc.style.fontSize = "medium";
+  desc.style.fontWeight = "300";
+  desc.style.fontWeight = "300";
+  title.appendChild(desc);
   bg.appendChild(title);
+  if (isAdmin) {
+    console.log("is admin, creating delete button");
+    const del = document.createElement("button");
+    del.innerText = "Delete";
+    del.style.fontSize = "medium";
+    del.className = "deleteButton";
+    del.onclick = function () {
+      if (deletePost(post._id)) {
+        bg.parentNode.removeChild(bg);
+      }
+    };
+    bg.appendChild(del);
+  }
   return bg;
 }
 
@@ -50,7 +82,11 @@ if (localStorage.getItem("password")) {
   checkIfAdmin(localStorage.getItem("password")).then((thing) => {
     if (thing) {
       // Is admin, un-hide create / delete post buttons.
-      document.getElementById("createPost").classList.remove("hidden");
+      isAdmin = true;
+      for (element of document.getElementsByClassName("hidden")) {
+        console.log(element);
+        element.classList.remove("hidden");
+      }
     } else {
       console.log("not your mom");
     }
