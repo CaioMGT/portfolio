@@ -3,6 +3,7 @@ async function summonPosts() {
     await (await fetch("https://api.caiomgt.com/getPosts")).json()
   ).post;
   const box = document.getElementById("postBox");
+  box.innerText = "";
   for (post of postList) {
     if (post._id != null) {
       // for some reason the response is returning a random prototype
