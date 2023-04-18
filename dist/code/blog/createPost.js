@@ -24,17 +24,7 @@ document.getElementById("submit").addEventListener("click", function () {
   let id;
   fetch("https://api.caiomgt.com/getPosts").then(function (val) {
     val.json().then(function (json) {
-      console.log(json);
-      let big = 0;
-      for (post in json.post) {
-        console.log(post.id);
-        if (big < post.id) {
-          console.log("this is bigger, switching big to " + post.id);
-          big = post.id;
-        }
-      }
-      id = big;
-      id++;
+      id = json.post.length;
       console.log("post id will be " + id);
       getSHA256Hash(localStorage.getItem("password")).then(function (password) {
         const json = JSON.stringify({
