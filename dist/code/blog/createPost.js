@@ -27,11 +27,14 @@ document.getElementById("submit").addEventListener("click", function () {
       console.log(json);
       let big = 0;
       for (post in json.post) {
+        console.log(post.id);
         if (big < post.id) {
+          console.log("this is bigger, switching big to " + post.id);
           big = post.id;
         }
       }
-      id = big++;
+      id = big;
+      id++;
       console.log("post id will be " + id);
       getSHA256Hash(localStorage.getItem("password")).then(function (password) {
         const json = JSON.stringify({
