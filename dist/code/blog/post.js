@@ -13,4 +13,8 @@ async function getPost() {
 getPost().then(function () {
   document.title = post.title;
   document.getElementById("title").innerText = post.title;
+  const box = document.getElementById("postBox");
+  box.attachShadow({ mode: "open" });
+  box.innerText = "";
+  box.shadowRoot.innerHTML = marked.parse(post.content);
 });
