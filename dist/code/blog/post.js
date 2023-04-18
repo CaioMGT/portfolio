@@ -15,18 +15,12 @@ getPost().then(function () {
   document.title = post.title;
   document.getElementById("title").innerText = post.title;
   const date = new Date(post.postDate);
-  var day = date.getDate().toString().padStart(2, "0");
-  var month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const hour = date.getHours().toString().padStart(2, "0");
+  const minute = date.getMinutes().toString().padStart(2, "0");
   const dateString =
-    day +
-    "/" +
-    month +
-    "/" +
-    date.getFullYear() +
-    " at " +
-    date.getHours() +
-    ":" +
-    date.getMinutes();
+    day + "/" + month + "/" + date.getFullYear() + " at " + hour + ":" + minute;
   document.getElementById("date").innerText = dateString;
   const box = document.getElementById("postBox");
   box.attachShadow({ mode: "open" });
