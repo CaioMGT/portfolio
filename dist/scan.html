@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html id="html" class="dark" lang="en">
+  <head>
+    <link rel="stylesheet" href="/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <script src="/code/thememgr.js"></script>
+    <script src="/code/bars.js"></script>
+    <script src="/code/scan.js" defer></script>
+  </head>
+  <body class="bg-neutral-300 dark:bg-neutral-800 roboto">
+    <top-nav></top-nav>
+    <div class="text-center">
+      <button
+        id="scan"
+        class="bg-sky-300 py-2 px-4 rounded-full text-black dark:text-white"
+      >
+        Scan your gridprint.
+      </button>
+      <h2
+        class="text-blue-400 dark:text-blue-300 text-4xl glowBlue hidden"
+        id="text"
+      >
+        Scanning gridprint...
+      </h2>
+    </div>
+    <bottom-bar></bottom-bar>
+  </body>
+</html>
