@@ -1,11 +1,15 @@
 let isAdmin = false;
-async function summonPosts() {
-  const postList = (
-    await (await fetch("https://api.caiomgt.com/getPosts")).json()
-  ).post;
+let postsLoaded = false;
+let domLoaded = false;
+let postList;
+async function getPosts() {
+  postList = (await (await fetch("https://api.caiomgt.com/getPosts")).json())
+    .post;
+}
+function summonPosts(list) {
   const box = document.getElementById("postBox");
   box.innerText = "";
-  for (post of postList) {
+  for (post of list) {
     if (post._id != null) {
       // for some reason the response is returning a random prototype
       // along with the posts so i have to do this.
@@ -14,7 +18,18 @@ async function summonPosts() {
     }
   }
 }
-summonPosts();
+getPosts().then(function () {
+  postsLoaded = true;
+  if (domLoaded) {
+    summonPosts(postList);
+  }
+});
+document.addEventListener("load", function () {
+  domLoaded = true;
+  if (postsLoaded) {
+    summonPosts(postList);
+  }
+});
 async function checkIfAdmin(password) {
   const hash = await getSHA256Hash(password);
   console.log(hash);
