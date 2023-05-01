@@ -1,17 +1,9 @@
 const postId = new URL(document.location).searchParams.get("id");
 let post;
 var day;
-async function getPost() {
-  console.log(postId);
-  thing = await fetch("https://api.caiomgt.com/getPost", {
-    headers: { "Content-Type": "application/json" },
-    method: "POST",
-    body: JSON.stringify({ id: postId }),
-  });
-  const json = await thing.json();
-  post = json.post;
-}
-getPost().then(function () {
+let domLoaded = false;
+let postLoaded = false;
+function populatePage() {
   document.title = post.title;
   document.getElementById("title").innerText = post.title;
   const date = new Date(post.postDate);
@@ -26,4 +18,28 @@ getPost().then(function () {
   box.attachShadow({ mode: "open" });
   box.innerText = "";
   box.shadowRoot.innerHTML = marked.parse(post.content);
+}
+async function getPost() {
+  console.log(postId);
+  thing = await fetch("https://api.caiomgt.com/getPost", {
+    headers: { "Content-Type": "application/json" },
+    method: "POST",
+    body: JSON.stringify({ id: postId }),
+  });
+  const json = await thing.json();
+  post = json.post;
+  postLoaded = true;
+}
+getPost().then(function () {
+  console.log("loaded post. dom loaded? " + domLoaded);
+  if (domLoaded) {
+    populatePage();
+  }
+});
+window.addEventListener("load", function () {
+  domLoaded = true;
+  console.log("loaded dom. post loaded? " + postLoaded);
+  if (postLoaded) {
+    populatePage();
+  }
 });

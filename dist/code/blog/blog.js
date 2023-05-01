@@ -20,12 +20,14 @@ function summonPosts(list) {
 }
 getPosts().then(function () {
   postsLoaded = true;
+  console.log("loaded posts. is dom loaded? " + domLoaded);
   if (domLoaded) {
     summonPosts(postList);
   }
 });
-document.addEventListener("load", function () {
+window.addEventListener("load", function () {
   domLoaded = true;
+  console.log("loaded dom. is posts loaded? " + postsLoaded);
   if (postsLoaded) {
     summonPosts(postList);
   }
