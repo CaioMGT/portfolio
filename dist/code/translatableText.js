@@ -2,16 +2,26 @@ const elements = [];
 let lang = localStorage.getItem("lang") || "en";
 let en;
 let pt;
-fetch("en-us.json").then(function (val) {
-  val.json().then(function (json) {
-    en = json;
+// Always call this function to fetch translations
+// I was going to make it hard-coded but decided that
+// It's best if you can decide what files to use
+// per page, so you won't have to cram everything
+// into the same json file.
+function fetchTranslations(enPath, ptPath) {
+  fetch(enPath).then(function (val) {
+    val.json().then(function (json) {
+      en = json;
+    });
   });
-});
-fetch("pt-br.json").then(function (val) {
-  val.json().then(function (json) {
-    pt = json;
+  fetch(ptPath).then(function (val) {
+    val.json().then(function (json) {
+      pt = json;
+    });
   });
-});
+}
+// Gotta do this since it takes time to fetch the json files.
+// Can't just await everything since this isn't a module
+// and that would just error
 function waitFor(conditionFunction) {
   const poll = (resolve) => {
     if (conditionFunction()) resolve();
@@ -23,7 +33,9 @@ function waitFor(conditionFunction) {
 async function update(transText) {
   let string;
   if (en == undefined || pt == undefined) {
-    console.log("waiting for lang files to load");
+    console.log(
+      "Waiting for lang files to load \n This may cause text to not appear temporarily."
+    );
     await waitFor(() => !(en == undefined) && !(pt == undefined));
     update(transText);
     return;
@@ -33,14 +45,14 @@ async function update(transText) {
   } else if (lang == "pt") {
     string = pt[transText.id];
   }
-  console.log("string is " + string);
   transText.innerText = string;
 }
+// Call this function to change the current language.
+// Accepted values are 'en' or 'pt'
 function changeLang(Lang) {
   lang = Lang;
-  console.log(elements);
+  localStorage.setItem("lang", lang);
   elements.forEach(function (element) {
-    console.log("found element " + element);
     update(element);
   });
 }
@@ -50,7 +62,6 @@ class transText extends HTMLElement {
   }
   async connectedCallback() {
     elements.push(this);
-    console.log("added to elements " + elements[this.id]);
     update(this);
   }
 }
