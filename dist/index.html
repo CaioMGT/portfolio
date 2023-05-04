@@ -1,136 +1,245 @@
 <!DOCTYPE html>
 <html id="html" class="dark" lang="en">
-<!--I believe everyone should have the right to understand what they want, so I don't minify my files. I left some comments, if you want to take a look!
+  <!--I believe everyone should have the right to understand what they want, so I don't minify my files. I left some comments, if you want to take a look!
 Although if you want to take a look at the css, I'd suggest going to the github instead. I preprocess my css files with TailwindCSS, so the processed
 files are humongous, my code is actually way at the bottom. If you want a link, here you go: https://www.github.com/caiomgt/caiomgt.github.io/blob/main/main.css
 -->
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="application-name" content="About Me">
-  <meta name="description" content="Hi, I'm Caio. If you want to know more about me, check this page.">
-  <meta name="author" content="Caio">
-  <meta name="keywords" content="CaioMGT, Caio, Programming, Roblox, Lua, C#, Python, Programmer, Portfolio, AboutMe">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/main.css">
-  <script src="/code/thememgr.js"></script>
-  <script src="/code/bars.js"></script>
-  <script>
-    window.onload = () => {
-      // Set age
-      const birth = new Date("2008-04-10")
-      const current = new Date()
-      let age = current.getFullYear() - birth.getFullYear()
-      console.log("current age is " + age)
-      console.log("current month is " + (current.getMonth() + 1) + ", target month is " + (birth.getMonth() + 1))
-      if (((current.getMonth() + 1) - (birth.getMonth() + 1)) < 0) {
-        //has not reached april yet, removing 1 year from age
-        age--
-        console.log("changed age to " + age)
-      }
-      document.getElementById("age").innerText = age
-
-      // Disable flexbox if display is of low width (mobile)
-      // Improves readability.
-      if (window.innerWidth <= 720) {
-        for (div of document.getElementsByClassName("disableIfLowWidth")) {
-          div.style.display = "block"
-          div.style.textAlign = "left"
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="application-name" content="About Me" />
+    <meta
+      name="description"
+      content="Hi, I'm Caio. If you want to know more about me, check this page."
+    />
+    <meta name="author" content="Caio" />
+    <meta
+      name="keywords"
+      content="CaioMGT, Caio, Programming, Roblox, Lua, C#, Python, Programmer, Portfolio, AboutMe"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/main.css" />
+    <script src="/code/thememgr.js"></script>
+    <script src="/code/bars.js"></script>
+    <script>
+      window.onload = () => {
+        // Set age
+        const birth = new Date("2008-04-10");
+        const current = new Date();
+        let age = current.getFullYear() - birth.getFullYear();
+        console.log("current age is " + age);
+        console.log(
+          "current month is " +
+            (current.getMonth() + 1) +
+            ", target month is " +
+            (birth.getMonth() + 1)
+        );
+        if (current.getMonth() + 1 - (birth.getMonth() + 1) < 0) {
+          //has not reached april yet, removing 1 year from age
+          age--;
+          console.log("changed age to " + age);
         }
-      }
-      window.addEventListener("resize", function() {
-        for (div of document.getElementsByClassName("disableIfLowWidth")) {
+        document.getElementById("age").innerText = age;
+
+        // Disable flexbox if display is of low width (mobile)
+        // Improves readability.
+        if (window.innerWidth <= 720) {
+          for (div of document.getElementsByClassName("disableIfLowWidth")) {
+            div.style.display = "block";
+            div.style.textAlign = "left";
+          }
+        }
+        window.addEventListener("resize", function () {
+          for (div of document.getElementsByClassName("disableIfLowWidth")) {
             if (window.innerWidth <= 720) {
-              div.style.display = "block"
-              div.style.textAlign = "left"
+              div.style.display = "block";
+              div.style.textAlign = "left";
             } else {
-              div.style.display = "flex"
+              div.style.display = "flex";
               if (div.id == "devnet") {
-                div.style.textAlign = "left"
+                div.style.textAlign = "left";
               } else {
-                div.style.textAlign = "right"
+                div.style.textAlign = "right";
               }
             }
           }
-        })
-    }
-  </script>
-  <script src="./code/fadeInOnScroll.js"></script>
-  <title>About Me</title>
-</head>
-<body class="bg-neutral-300 dark:bg-neutral-800 roboto" draggable="false">
-  <!--This is a custom element, to check how it and the bottom bar works, take a look at bars.js-->
-  <top-nav active-button="aboutme"></top-nav> 
-  <h1 class='py-8 roboto text-blue-400 dark:text-blue-300 text-center text-7xl font-thin glowBlue fadein' draggable="false">Hi, I'm Caio!</h1>
-  <h2 class="roboto text-blue-300 dark:text-blue-200 text-center font-light text-4xl fadein">Programmer, Amateur UI Designer and Bilingual.</h2>
-  <h2 class="py-8 roboto text-black dark:text-white text-center text-6xl fadein font-thin">About Me:</h2>
-  <!--This is to center the div-->
-  <div class="flex grid-rows-1 justify-center">
-    <div class="rounded-md roboto w-3/4 bg-neutral-100 dark:bg-neutral-900 dark:text-white text-center fadein left-1/4 right-1/4 md:text-xl">
-      I'm a <span id="age">(Calculating Age)</span> year old Brazilian Full Stack developer and I like playing and making games. I have had an interest in gaming and development at a very young age. I started programming at the age of 10, using Codecademy, where I learnt my first language, <a class="text-neutral-400 dark:text-gray-400" href="https://dotnet.microsoft.com/en-us/languages/csharp" target="_blank">C#</a>, following suit by <a class="text-neutral-400 dark:text-gray-400" href="https://www.javascript.com/" target="_blank">JavaScript </a> and <a class="text-neutral-400 dark:text-gray-400" href="https://www.lua.org/" target="_blank">Lua</a>.<br>
-      I learnt them and I enjoyed using them, whether for my small shenanigans or for some low budget games, so I pursued further... <br>
-      With a lot of free time, my skillset increased and, because of programming, I met a lot of great friends and made many connections, I joined communities that shared the same passion I had, while also being able to share my projects to get another point of view! <br>
-      This really motivated me to keep going to where I am today! I consider myself a capable Programmer and I want to pursue this as my full-time career in the future <br>
-      I have worked with various Programming Languages and technologies before, here are some: <br>
-      <ul class="text-blue-400 text-base grid grid-cols-2">
-        <li>JavaScript</li>
-        <li>MongoDB</li>
-        <li>TypeScript</li>
-        <li>OpenGL</li>
-        <li>C#</li>
-        <li>Tailwind CSS</li>
-        <li>C</li>
-        <li>Windows Forms</li>
-        <li>Python</li>
-        <li>PyGame</li>
-        <li>Kotlin</li>
-        <li>Love2D</li>
-        <li>Java</li>
-        <li>Unity</li>
-        <li>Lua</li>
-        <li>Kord (ex)</li>
-        <li>Arduino</li>
-        <li>discord.py</li>
-      </ul>
-      Outside of Programming, I've dabbled in art and animation before, making some simple animations using Adobe Flash. <br>
-      I play Keyboard (The instrument) and have used FL Studio to compose songs as a hobby, although I don't intend on releasing them to the public.<br>
-      My favorite games are Minecraft and Payday 2, if you play any of those, hit me up on discord ;) <br>
+        });
+      };
+    </script>
+    <script src="./code/translatableText.js" type="module"></script>
+    <script src="./code/fadeInOnScroll.js"></script>
+    <title>About Me</title>
+  </head>
+  <body class="bg-neutral-300 dark:bg-neutral-800 roboto" draggable="false">
+    <!--This is a custom element, to check how it and the bottom bar works, take a look at bars.js-->
+    <top-nav active-button="aboutme"></top-nav>
+    <trans-text id="yourmom"></trans-text>
+    <h1
+      class="py-8 roboto text-blue-400 dark:text-blue-300 text-center text-7xl font-thin glowBlue fadein"
+      draggable="false"
+    >
+      Hi, I'm Caio!
+    </h1>
+    <h2
+      class="roboto text-blue-300 dark:text-blue-200 text-center font-light text-4xl fadein"
+    >
+      Programmer, Amateur UI Designer and Bilingual.
+    </h2>
+    <h2
+      class="py-8 roboto text-black dark:text-white text-center text-6xl fadein font-thin"
+    >
+      About Me:
+    </h2>
+    <!--This is to center the div-->
+    <div class="flex grid-rows-1 justify-center">
+      <div
+        class="rounded-md roboto w-3/4 bg-neutral-100 dark:bg-neutral-900 dark:text-white text-center fadein left-1/4 right-1/4 md:text-xl"
+      >
+        I'm a <span id="age">(Calculating Age)</span> year old Brazilian Full
+        Stack developer and I like playing and making games. I have had an
+        interest in gaming and development at a very young age. I started
+        programming at the age of 10, using Codecademy, where I learnt my first
+        language,
+        <a
+          class="text-neutral-400 dark:text-gray-400"
+          href="https://dotnet.microsoft.com/en-us/languages/csharp"
+          target="_blank"
+          >C#</a
+        >, following suit by
+        <a
+          class="text-neutral-400 dark:text-gray-400"
+          href="https://www.javascript.com/"
+          target="_blank"
+          >JavaScript
+        </a>
+        and
+        <a
+          class="text-neutral-400 dark:text-gray-400"
+          href="https://www.lua.org/"
+          target="_blank"
+          >Lua</a
+        >.<br />
+        I learnt them and I enjoyed using them, whether for my small shenanigans
+        or for some low budget games, so I pursued further... <br />
+        With a lot of free time, my skillset increased and, because of
+        programming, I met a lot of great friends and made many connections, I
+        joined communities that shared the same passion I had, while also being
+        able to share my projects to get another point of view! <br />
+        This really motivated me to keep going to where I am today! I consider
+        myself a capable Programmer and I want to pursue this as my full-time
+        career in the future <br />
+        I have worked with various Programming Languages and technologies
+        before, here are some: <br />
+        <ul class="text-blue-400 text-base grid grid-cols-2">
+          <li>JavaScript</li>
+          <li>MongoDB</li>
+          <li>TypeScript</li>
+          <li>OpenGL</li>
+          <li>C#</li>
+          <li>Tailwind CSS</li>
+          <li>C</li>
+          <li>Windows Forms</li>
+          <li>Python</li>
+          <li>PyGame</li>
+          <li>Kotlin</li>
+          <li>Love2D</li>
+          <li>Java</li>
+          <li>Unity</li>
+          <li>Lua</li>
+          <li>Kord (ex)</li>
+          <li>Arduino</li>
+          <li>discord.py</li>
+        </ul>
+        Outside of Programming, I've dabbled in art and animation before, making
+        some simple animations using Adobe Flash. <br />
+        I play Keyboard (The instrument) and have used FL Studio to compose
+        songs as a hobby, although I don't intend on releasing them to the
+        public.<br />
+        My favorite games are Minecraft and Payday 2, if you play any of those,
+        hit me up on discord ;) <br />
+      </div>
     </div>
-  </div>
-  <!--This section is when you scroll down-->
-  <div class="text-black dark:text-white">
-    <h2 class="py-8 roboto text-center font-light text-4xl fade-in-section"><br><br><br><br>I am part of two Roblox groups:</h2> <br><br>
-    <!--A fade in section only pops up when it is in view, the class is what handles that action. If you want to take a look at how it works, check fadeInOnScroll.js-->
-    <div class="fade-in-section">
-      <a href="https://www.roblox.com/groups/5866725/DevNet-Studios#!/about" target="_blank" class="roboto text-4xl text-black dark:text-white pt-4 text-center ml-8">DevNet Studios</a>
-      <div class="flex flex-row pt-2 px-10 text-left disableIfLowWidth" id="devnet">
-        <img class="h-[300px] w-[400px] shadow-light md:h-[200px] md:w-[266.666667px]" src="./img/devnetlogo.png" alt="DevNet Studios Logo" >
-        <div class="flex flex-col px-2"> <!--I need to create another flex for the text so they can be vertical-->
-          <h3 class="roboto"> <span class="font-bold"> Position:</span> Creator, Lead Developer</h3> 
-          <h3 class="roboto">DevNet Studios is a Studio I created to seek my own personal projects. Unfortunately, our only game is currently on hold, due to my lack of level design skills. <br>
-            I hope to continue DevNet Studios in a near future, as I create more connections and find more talent <br></h3>
+    <!--This section is when you scroll down-->
+    <div class="text-black dark:text-white">
+      <h2 class="py-8 roboto text-center font-light text-4xl fade-in-section">
+        <br /><br /><br /><br />I am part of two Roblox groups:
+      </h2>
+      <br /><br />
+      <!--A fade in section only pops up when it is in view, the class is what handles that action. If you want to take a look at how it works, check fadeInOnScroll.js-->
+      <div class="fade-in-section">
+        <a
+          href="https://www.roblox.com/groups/5866725/DevNet-Studios#!/about"
+          target="_blank"
+          class="roboto text-4xl text-black dark:text-white pt-4 text-center ml-8"
+          >DevNet Studios</a
+        >
+        <div
+          class="flex flex-row pt-2 px-10 text-left disableIfLowWidth"
+          id="devnet"
+        >
+          <img
+            class="h-[300px] w-[400px] shadow-light md:h-[200px] md:w-[266.666667px]"
+            src="./img/devnetlogo.png"
+            alt="DevNet Studios Logo"
+          />
+          <div class="flex flex-col px-2">
+            <!--I need to create another flex for the text so they can be vertical-->
+            <h3 class="roboto">
+              <span class="font-bold"> Position:</span> Creator, Lead Developer
+            </h3>
+            <h3 class="roboto">
+              DevNet Studios is a Studio I created to seek my own personal
+              projects. Unfortunately, our only game is currently on hold, due
+              to my lack of level design skills. <br />
+              I hope to continue DevNet Studios in a near future, as I create
+              more connections and find more talent <br />
+            </h3>
+          </div>
+        </div>
+        <br />
+      </div>
+      <div class="fade-in-section text-right">
+        <a
+          href="https://www.roblox.com/groups/16560176/KnockOff-Studio#!/about"
+          target="_blank"
+          class="roboto text-4xl text-black dark:text-white mr-8"
+          >KnockOff Studio</a
+        >
+        <div class="flex flex-row-reverse pt-2 px-10 disableIfLowWidth">
+          <img
+            class="h-[210.5px] w-[400px] shadow-light md:h-[140.333333px] md:w-[266.666667px]"
+            src="./img/knockofflogo.png"
+            alt="KnockOff Studios Logo"
+          />
+          <div class="flex flex-col px-2">
+            <h3 class="roboto">
+              <span class="font-bold">Position:</span> Co-Founder, Lead
+              Programmer
+            </h3>
+            <h3 class="roboto">
+              KnockOff Studio is a group created by me and my friend Jordan.<br />
+              We're currently working on a game, but I can't tell you much about
+              it. All I can tell you is it'll be good! <br />
+              This is where I spend most of my time developing on Roblox on.
+              <br />
+              I handle everything related to programming here, using tools like
+              Rojo, Wally, etc...
+            </h3>
+          </div>
         </div>
       </div>
-      <br>
-    </div> 
-    <div class="fade-in-section text-right">
-      <a href="https://www.roblox.com/groups/16560176/KnockOff-Studio#!/about" target="_blank" class="roboto text-4xl text-black dark:text-white mr-8">KnockOff Studio</a>
-      <div class="flex flex-row-reverse pt-2 px-10 disableIfLowWidth"> 
-        <img class="h-[210.5px] w-[400px] shadow-light md:h-[140.333333px] md:w-[266.666667px]" src="./img/knockofflogo.png" alt="KnockOff Studios Logo">
-        <div class="flex flex-col px-2">
-          <h3 class="roboto"> <span class="font-bold">Position:</span> Co-Founder, Lead Programmer</h3>
-          <h3 class="roboto">
-            KnockOff Studio is a group created by me and my friend Jordan.<br> We're currently working on a game, but I can't tell you much about it. All I can tell you is it'll be good! <br>
-            This is where I spend most of my time developing on Roblox on. <br>
-            I handle everything related to programming here, using tools like Rojo, Wally, etc...
-          </h3>
-        </div>
-      </div>
+      <br />
+      <h2 class="text-center">
+        I have a lot of random projects, you can check them out on my
+        <a class="text-neutral-400 dark:text-gray-400" href="/portfolio"
+          >Portfolio</a
+        >.
+      </h2>
     </div>
-    <br> 
-    <h2 class="text-center">I have a lot of random projects, you can check them out on my <a class="text-neutral-400 dark:text-gray-400" href="/portfolio">Portfolio</a>.</h2>
-  </div>
-  <bottom-bar></bottom-bar>
-</body>
+    <bottom-bar></bottom-bar>
+  </body>
 </html>

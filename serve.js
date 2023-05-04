@@ -40,6 +40,9 @@ app.all("*", (req, res) => {
     case "wav":
       res.writeHead(200, { "Content-Type": "audio/wav" });
       break;
+    case "json":
+      res.writeHead(200, { "Content-Type": "application/json" });
+      break;
     default:
       res.writeHead(200, { "Content-Type": "text/html" });
       //This technically means I won't get a 404 page anymore, but this only affects me locally as github already handles 404 pages on Github Poges
