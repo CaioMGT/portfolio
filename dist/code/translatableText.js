@@ -62,6 +62,7 @@ class transText extends HTMLElement {
   }
   async connectedCallback() {
     elements.push(this);
+    this.innerText = "Waiting for translations to load.";
     update(this);
   }
 }
