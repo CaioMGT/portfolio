@@ -1,7 +1,7 @@
 // To add other languages, make sure that the json file matches
-// the name of the English one, add 1 to this variable and add
-// a fetch in fetchTranslations
-const languageCount = 2;
+// the name of the English one, add 2 to this variable and add
+// a fetch for both the global json and the generic one in fetchTranslations
+const languageCount = 4;
 // -------------------
 let loadedLanguages = 0;
 const elements = [];
@@ -15,13 +15,25 @@ const translations = {};
 function fetchTranslations(fileName) {
   fetch("translations/en/" + fileName).then(function (val) {
     val.json().then(function (json) {
-      translations["en"] = json;
+      translations["en"] = { ...translations["en"], ...json };
       loadedLanguages++;
     });
   });
   fetch("translations/pt/" + fileName).then(function (val) {
     val.json().then(function (json) {
-      translations["pt"] = json;
+      translations["pt"] = { ...translations["pt"], ...json };
+      loadedLanguages++;
+    });
+  });
+  fetch("translations/pt/global.json").then(function (val) {
+    val.json().then(function (json) {
+      translations["pt"] = { ...translations["pt"], ...json };
+      loadedLanguages++;
+    });
+  });
+  fetch("translations/en/global.json").then(function (val) {
+    val.json().then(function (json) {
+      translations["en"] = { ...translations["en"], ...json };
       loadedLanguages++;
     });
   });

@@ -1,149 +1,149 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.slideup{
-    animation-duration: 2s;
-    animation-name: slideup;
-    animation-timing-function: ease-out;
+.slideup {
+  animation-duration: 2s;
+  animation-name: slideup;
+  animation-timing-function: ease-out;
 }
-.fadein{
-    animation-duration: 3s;
-    animation-name: fadein;
-    animation-timing-function: linear;
+.fadein {
+  animation-duration: 3s;
+  animation-name: fadein;
+  animation-timing-function: linear;
 }
 .popup {
-    animation-duration: 0.4s;
-    animation-name: popup;
-    animation-timing-function: linear;
+  animation-duration: 0.4s;
+  animation-name: popup;
+  animation-timing-function: linear;
 }
 .popdown {
-    animation-duration: 0.4s;
-    animation-name: popdown;
-    animation-timing-function: linear;
+  animation-duration: 0.4s;
+  animation-name: popdown;
+  animation-timing-function: linear;
 }
-.toggle{
-    width:50px;
-    height:25px;
-    background-color:rgb(70, 70, 70);
-    transition: background-color 0.5s ease-in-out;
-    will-change: background-color;
+.toggle {
+  width: 50px;
+  height: 25px;
+  background-color: rgb(70, 70, 70);
+  transition: background-color 0.5s ease-in-out;
+  will-change: background-color;
 }
-.toggle.active{
-    background-color: rgb(42, 174, 245);
+.toggle.active {
+  background-color: rgb(42, 174, 245);
 }
 .dot {
-    position:relative;
-    left:3px;
-    transition: left 0.2s ease-out;
-    will-change: left;
+  position: relative;
+  left: 3px;
+  transition: left 0.2s ease-out;
+  will-change: left;
 }
 .dot.active {
-    left:27px;
+  left: 27px;
 }
 .roboto {
-    font-family: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-.shadow-light{
-    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);  
+.shadow-light {
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
 }
 .glow {
-    text-shadow: 2px 2px 50px rgb(255, 255, 255);
+  text-shadow: 2px 2px 50px rgb(255, 255, 255);
 }
 .glowBlue {
-    text-shadow: 2px 2px 50px rgb(96, 165, 250);
+  text-shadow: 2px 2px 50px rgb(96, 165, 250);
 }
 .activeTop {
-    background-color: rgba(156, 163, 175, 0.2);
+  background-color: rgba(156, 163, 175, 0.2);
 }
-.top-button:hover{
-    background-color:rgba(255, 255, 255, 0.5);
+.top-button:hover {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 .fade-in-section {
-    opacity: 0;
-    transform: translateY(20vh);
-    visibility: hidden;
-    transition: opacity 0.6s ease-out, transform 1.2s ease-out;
-    will-change: opacity, visibility;
+  opacity: 0;
+  transform: translateY(20vh);
+  visibility: hidden;
+  transition: opacity 0.6s ease-out, transform 1.2s ease-out;
+  will-change: opacity, visibility;
 }
 .fade-in-section.is-visible {
-    opacity: 1;
-    transform: none;
-    visibility: visible;
+  opacity: 1;
+  transform: none;
+  visibility: visible;
 }
 @keyframes dotNormal {
-    0% {
-        position:relative;
-        left:28px;
-    }
-    100% {
-        position:relative;
-        left:2px;
-    }
+  0% {
+    position: relative;
+    left: 28px;
+  }
+  100% {
+    position: relative;
+    left: 2px;
+  }
 }
 @keyframes dotActive {
-    0% {
-        position:relative;
-        left:2px;
-    }
-    100% {
-        position:relative;
-        left:28px;
-    }
+  0% {
+    position: relative;
+    left: 2px;
+  }
+  100% {
+    position: relative;
+    left: 28px;
+  }
 }
 @keyframes normalTrans {
-    0% {
-        background-color: rgb(42, 174, 245);
-    }
-    100% {
-        background-color: rgb(70, 70, 70);
-    }
+  0% {
+    background-color: rgb(42, 174, 245);
+  }
+  100% {
+    background-color: rgb(70, 70, 70);
+  }
 }
 @keyframes activeTrans {
-    0% {
-        background-color: rgb(70, 70, 70);
-    }
-    100% {
-        background-color: rgb(42, 174, 245);
-    }
+  0% {
+    background-color: rgb(70, 70, 70);
+  }
+  100% {
+    background-color: rgb(42, 174, 245);
+  }
 }
 
 @keyframes slideup {
-    from {
-        position: relative;
-        top:80px;
-    }
-    20%{
-        position: relative;
-        top:40px;
-    }
-    to {
-        position:relative;
-        top: 0px;
-    }
+  from {
+    position: relative;
+    top: 80px;
+  }
+  20% {
+    position: relative;
+    top: 40px;
+  }
+  to {
+    position: relative;
+    top: 0px;
+  }
 }
 @keyframes fadein {
-    from {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes popup {
-    0% {
-        transform:translateY(-100%);
-    }
-    100% {
-      transform:translateY(0);
-      opacity: 1;
-    }
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 @keyframes popdown {
-    0%{
-        transform:translateY(100%);
-    }
-    100% {
-        transform:translateY(0);
-    }
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

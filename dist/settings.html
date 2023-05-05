@@ -1,40 +1,84 @@
 <!DOCTYPE html>
 <html id="html" class="dark" lang="en">
-    <head>
-        <link rel="stylesheet" href="/main.css">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
-        <style>
-            *{
-                transition: background-color 0.3s ease-in-out;
-                will-change: background-color;
-            }
-        </style>
-        <script src="/code/toggle.js"></script>
-        <script src="/code/thememgr.js"></script>
-        <script src="/code/themeswitcher.js"></script>
-        <script src="/code/bars.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="application-name" content="Settings">
-        <meta name="description" content="Change your settings here.">
-        <meta name="author" content="Caio">
-        <meta name="keywords" content="CaioMGT, Caio, Programming, Roblox, Lua, C#, Python, Programmer, Settings">
-        <title>Settings</title>
-    </head>
-    <body class="bg-neutral-300 dark:bg-neutral-800 roboto">
-        <top-nav></top-nav>
-        <div class="flex justify-center grid-rows-1 py-8 text-center fadein">
-            <div class="flex flex-col gap-y-6 rounded-md roboto w-3/4 bg-neutral-100 dark:bg-neutral-900 dark:text-white md:text-xl">
-                <h2 class='pt-4 roboto text-black dark:text-white text-center text-4xl font-thin' draggable="false">Settings</h1>
-                <div class="flex flex-col">
-                    <!--
+  <head>
+    <link rel="stylesheet" href="/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        transition: background-color 0.3s ease-in-out;
+        will-change: background-color;
+      }
+    </style>
+    <script src="/code/toggle.js"></script>
+    <script src="/code/thememgr.js"></script>
+    <script src="/code/translatableText.js"></script>
+    <script src="/code/themeswitcher.js" defer></script>
+    <script src="/code/langswitcher.js" defer></script>
+    <script src="/code/bars.js"></script>
+    <script>
+      fetchTranslations("settings.json");
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="application-name" content="Settings" />
+    <meta name="description" content="Change your settings here." />
+    <meta name="author" content="Caio" />
+    <meta
+      name="keywords"
+      content="CaioMGT, Caio, Programming, Roblox, Lua, C#, Python, Programmer, Settings"
+    />
+    <title>Settings</title>
+  </head>
+  <body class="bg-neutral-300 dark:bg-neutral-800 roboto">
+    <top-nav></top-nav>
+    <div class="flex justify-center grid-rows-1 py-8 text-center fadein">
+      <div
+        class="flex flex-col gap-y-6 rounded-md roboto w-3/4 bg-neutral-100 dark:bg-neutral-900 dark:text-white md:text-xl"
+      >
+        <trans-text
+          id="settings"
+          class="pt-4 roboto text-black dark:text-white text-center text-4xl font-thin"
+          draggable="false"
+          >Settings</trans-text
+        >
+        <div class="flex flex-col">
+          <!--
                         To make a toggle button, all you need is the toggle class and
                         register it in the addToggle(element, defaultValue, callback) function.
                         To see an example, check the themeswitcher.js file.
                     -->
-                    <div>Enable Light Theme <button type="button" style="display:inline" id="theme-switcher" class="toggle normal mt-2 rounded-full"><div class="dot normal rounded-full bg-white w-[20px] h-[20px]"></div></button></div>
-                </div>
-            </div>
+          <div>
+            <trans-text id="light-theme-toggle">Enable Light Theme</trans-text
+            ><button
+              type="button"
+              style="display: inline"
+              id="theme-switcher"
+              class="toggle normal mt-2 rounded-full"
+            >
+              <div
+                class="dot normal rounded-full bg-white w-[20px] h-[20px]"
+              ></div>
+            </button>
+          </div>
+          <div>
+            <trans-text id="portuguese-language-toggle"
+              >Change language to Portuguese </trans-text
+            ><button
+              type="button"
+              style="display: inline"
+              id="portuguese-switcher"
+              class="toggle normal mt-2 rounded-full"
+            >
+              <div
+                class="dot normal rounded-full bg-white w-[20px] h-[20px]"
+              ></div>
+            </button>
+          </div>
         </div>
-        <bottom-bar></bottom-bar>
-    </body>
+      </div>
+    </div>
+    <bottom-bar></bottom-bar>
+  </body>
 </html>
