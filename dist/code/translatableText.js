@@ -48,11 +48,6 @@ async function update(transText) {
     return;
   }
   string = translations[lang][transText.id];
-  /*if (lang == "en") {
-    string = en[transText.id];
-  } else if (lang == "pt") {
-    string = pt[transText.id];
-  }*/
   transText.innerText = string;
 }
 // Call this function to change the current language.
