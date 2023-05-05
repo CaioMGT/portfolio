@@ -28,10 +28,7 @@ files are humongous, my code is actually way at the bottom. If you want a link, 
     <script src="./code/translatableText.js"></script>
 
     <script>
-      fetchTranslations(
-        "/translations/en/en-us.json",
-        "/translations/pt/pt-br.json"
-      );
+      fetchTranslations("about.json");
       window.onload = () => {
         // Set age
         const birth = new Date("2008-04-10");

@@ -1,21 +1,28 @@
+// To add other languages, make sure that the json file matches
+// the name of the English one, add 1 to this variable and add
+// a fetch in fetchTranslations
+const languageCount = 2;
+// -------------------
+let loadedLanguages = 0;
 const elements = [];
 let lang = localStorage.getItem("lang") || "en";
-let en;
-let pt;
+const translations = {};
 // Always call this function to fetch translations
 // I was going to make it hard-coded but decided that
 // It's best if you can decide what files to use
 // per page, so you won't have to cram everything
 // into the same json file.
-function fetchTranslations(enPath, ptPath) {
-  fetch(enPath).then(function (val) {
+function fetchTranslations(fileName) {
+  fetch("translations/en/" + fileName).then(function (val) {
     val.json().then(function (json) {
-      en = json;
+      translations["en"] = json;
+      loadedLanguages++;
     });
   });
-  fetch(ptPath).then(function (val) {
+  fetch("translations/pt/" + fileName).then(function (val) {
     val.json().then(function (json) {
-      pt = json;
+      translations["pt"] = json;
+      loadedLanguages++;
     });
   });
 }
@@ -32,23 +39,23 @@ function waitFor(conditionFunction) {
 }
 async function update(transText) {
   let string;
-  if (en == undefined || pt == undefined) {
+  if (loadedLanguages != languageCount) {
     console.log(
       "Waiting for lang files to load \n This may cause text to not appear temporarily."
     );
-    await waitFor(() => !(en == undefined) && !(pt == undefined));
+    await waitFor(() => loadedLanguages == languageCount);
     update(transText);
     return;
   }
-  if (lang == "en") {
+  string = translations[lang][transText.id];
+  /*if (lang == "en") {
     string = en[transText.id];
   } else if (lang == "pt") {
     string = pt[transText.id];
-  }
+  }*/
   transText.innerText = string;
 }
 // Call this function to change the current language.
-// Accepted values are 'en' or 'pt'
 function changeLang(Lang) {
   lang = Lang;
   localStorage.setItem("lang", lang);
