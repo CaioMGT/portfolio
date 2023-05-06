@@ -60,6 +60,16 @@ async function update(transText) {
     return;
   }
   string = translations[lang][transText.id];
+  if (string == null) {
+    console.log(
+      "Could not find translation key " +
+        transText.id +
+        " in language " +
+        lang +
+        ", falling back to english."
+    );
+    string = translations["en"][transText.id];
+  }
   transText.innerText = string;
 }
 // Call this function to change the current language.
