@@ -5,6 +5,7 @@ const languages = "en,pt";
 // --------------------------------------Do not modify past this--------------------------------------
 let languageCount = 0;
 let loadedLanguages = 0;
+let languagesLoaded = false;
 const elements = [];
 let lang = localStorage.getItem("lang") || "en";
 const translations = {};
@@ -14,19 +15,29 @@ const translations = {};
 // per page, so you won't have to cram everything
 // into the same json file.
 function fetchTranslations(fileName) {
-  for (lang of languages.split(",")) {
-    console.log("iterating thru " + lang);
+  for (currentLang of languages.split(",")) {
+    console.log("iterating thru " + currentLang);
     languageCount += 2;
-    fetch("translations/" + lang + "/" + fileName).then(function (val) {
+    const actualLang = currentLang;
+    fetch("translations/" + actualLang + "/" + fileName).then(function (val) {
       val.json().then(function (json) {
-        translations[lang] = { ...translations[lang], ...json };
+        translations[actualLang] = { ...translations[actualLang], ...json };
+        console.log(translations[actualLang]);
         loadedLanguages++;
+        if (loadedLanguages == languageCount) {
+          languagesLoaded = true;
+          console.log("all languages loaded!");
+        }
       });
     });
-    fetch("translations/" + lang + "/global.json").then(function (val) {
+    fetch("translations/" + actualLang + "/global.json").then(function (val) {
       val.json().then(function (json) {
-        translations[lang] = { ...translations[lang], ...json };
+        translations[actualLang] = { ...translations[actualLang], ...json };
         loadedLanguages++;
+        if (loadedLanguages == languageCount) {
+          languagesLoaded = true;
+          console.log("all languages loaded!");
+        }
       });
     });
   }
@@ -48,10 +59,11 @@ async function update(transText) {
     console.log(
       "Waiting for lang files to load \n This may cause text to not appear temporarily."
     );
-    await waitFor(() => loadedLanguages == languageCount);
+    await waitFor(() => languagesLoaded == true);
     update(transText);
     return;
   }
+  console.log("ee");
   string = translations[lang][transText.id];
   if (string == null) {
     console.log(
