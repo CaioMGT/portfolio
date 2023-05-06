@@ -134,10 +134,12 @@ function createContainer(img, text, clickable, link) {
 // I chose to separate each one into their own function,
 // so the connectedCallback doesn't get too crowded.
 function contactInfo(bar) {
-  const contact = document.createElement("div");
-  contact.className =
+  const div = document.createElement("div");
+  div.className =
     "flex flex-col h-auto roboto content-center items-center z-index:100";
-  contact.innerText = "Contact:";
+  const text = document.createElement("trans-text");
+  text.id = "contact";
+  //contact.innerText = "Contact:";
   const discord = createContainer("/svg/discord.svg", "capetaanal#1984");
   const github = createContainer(
     "/svg/github-dark.svg",
@@ -175,10 +177,11 @@ function contactInfo(bar) {
       bar.style.position = "static";
     }
   });
-  contact.appendChild(discord);
-  contact.appendChild(github);
-  contact.appendChild(email);
-  return contact;
+  div.appendChild(text);
+  div.appendChild(discord);
+  div.appendChild(github);
+  div.appendChild(email);
+  return div;
 }
 const facts = [
   "fact-1",
