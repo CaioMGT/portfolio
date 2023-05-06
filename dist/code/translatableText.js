@@ -1,7 +1,8 @@
-// To add other languages, make sure that the json file matches
-// the name of the English one, add 2 to this variable and add
-// a fetch for both the global json and the generic one in fetchTranslations
-const languageCount = 4;
+// This is a comma separated list (with no spaces) of all supported languages.
+// if you want to add another, make sure to add it to this list.
+// Make sure that the language name matches the folder name you have in translations.
+const languages = "en,pt";
+let languageCount = 0;
 // -------------------
 let loadedLanguages = 0;
 const elements = [];
@@ -13,30 +14,22 @@ const translations = {};
 // per page, so you won't have to cram everything
 // into the same json file.
 function fetchTranslations(fileName) {
-  fetch("translations/en/" + fileName).then(function (val) {
-    val.json().then(function (json) {
-      translations["en"] = { ...translations["en"], ...json };
-      loadedLanguages++;
+  for (lang of languages.split(",")) {
+    console.log("iterating thru " + lang);
+    languageCount += 2;
+    fetch("translations/" + lang + "/" + fileName).then(function (val) {
+      val.json().then(function (json) {
+        translations[lang] = { ...translations[lang], ...json };
+        loadedLanguages++;
+      });
     });
-  });
-  fetch("translations/pt/" + fileName).then(function (val) {
-    val.json().then(function (json) {
-      translations["pt"] = { ...translations["pt"], ...json };
-      loadedLanguages++;
+    fetch("translations/" + lang + "/global.json").then(function (val) {
+      val.json().then(function (json) {
+        translations[lang] = { ...translations[lang], ...json };
+        loadedLanguages++;
+      });
     });
-  });
-  fetch("translations/pt/global.json").then(function (val) {
-    val.json().then(function (json) {
-      translations["pt"] = { ...translations["pt"], ...json };
-      loadedLanguages++;
-    });
-  });
-  fetch("translations/en/global.json").then(function (val) {
-    val.json().then(function (json) {
-      translations["en"] = { ...translations["en"], ...json };
-      loadedLanguages++;
-    });
-  });
+  }
 }
 // Gotta do this since it takes time to fetch the json files.
 // Can't just await everything since this isn't a module
