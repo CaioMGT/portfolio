@@ -2,7 +2,10 @@
 let settings;
 function createButton(text, href, order) {
   const button = document.createElement("a");
-  button.innerText = text;
+  //button.innerText = text;
+  const innerText = document.createElement("trans-text");
+  innerText.id = text;
+  button.appendChild(innerText);
   button.href = href;
   button.className = "roboto text-black dark:text-white top-button px-2 py-2";
   button.style.borderRadius = "12px";
@@ -61,12 +64,12 @@ class Topbar extends HTMLElement {
     updateSettings();
     document.documentElement.addEventListener("ThemeChange", updateSettings);
     this.buttons = {};
-    const aboutme = createButton("About Me", "/", tabIndex);
+    const aboutme = createButton("about", "/", tabIndex);
     tabIndex++;
     this.buttons.aboutme = aboutme;
-    const portfolio = createButton("Portfolio", "/portfolio", tabIndex);
+    const portfolio = createButton("portfolio", "/portfolio", tabIndex);
     tabIndex++;
-    const blog = createButton("Blog", "/blog/index", tabIndex);
+    const blog = createButton("blog", "/blog/index", tabIndex);
     this.buttons.blog = blog;
     bar.appendChild(settings);
     bar.appendChild(aboutme);

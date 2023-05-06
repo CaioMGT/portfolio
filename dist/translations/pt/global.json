@@ -1,4 +1,7 @@
 {
+  "blog": "Blog",
+  "portfolio": "Portfolio",
+  "about": "Sobre Mim",
   "contact": "Contato:",
   "fun-fact": "Fato Interessante:",
   "fact-1": "Fiz esse site para me desafiar, além de aprender HTML e CSS.\nTenho que dizer, foi muito divertido!",
@@ -14,7 +17,7 @@
   "fact-11": "Isso não é um fato. (ou é?)",
   "fact-12": "Moro no Brasil.",
   "fact-13": "Vou te levar ao Brasil",
-  "fact-14": "Esse site é completamente open source. \n Se você quiser olhar como ele funciona, o github é \n https://github.com/CaioMGT/caiomgt.github.io",
+  "fact-14": "Esse site é completamente open source. \n Se você quiser ver como ele funciona, o github é \n https://github.com/CaioMGT/caiomgt.github.io",
   "fact-15": "Não tenho muita certeza por que eu fiz isso",
   "fact-16": "Esses fatos nem sempre são verdadeiros.",
   "fact-17": "Eu não sei o que estou fazendo!",

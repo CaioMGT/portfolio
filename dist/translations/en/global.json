@@ -1,4 +1,7 @@
 {
+  "blog": "Blog",
+  "portfolio": "Portfolio",
+  "about": "About Me",
   "contact": "Contact",
   "fun-fact": "Fun Fact:",
   "fact-1": "I made this website to challenge myself and learn HTML and CSS, It's been a blast!",
