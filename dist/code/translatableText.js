@@ -2,8 +2,8 @@
 // if you want to add another, make sure to add it to this list.
 // Make sure that the language name matches the folder name you have in translations.
 const languages = "en,pt";
+// --------------------------------------Do not modify past this--------------------------------------
 let languageCount = 0;
-// -------------------
 let loadedLanguages = 0;
 const elements = [];
 let lang = localStorage.getItem("lang") || "en";
