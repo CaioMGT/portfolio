@@ -22,7 +22,6 @@ function fetchTranslations(fileName) {
     fetch("translations/" + actualLang + "/" + fileName).then(function (val) {
       val.json().then(function (json) {
         translations[actualLang] = { ...translations[actualLang], ...json };
-        console.log(translations[actualLang]);
         loadedLanguages++;
         if (loadedLanguages == languageCount) {
           languagesLoaded = true;
