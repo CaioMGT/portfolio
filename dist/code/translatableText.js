@@ -1,8 +1,6 @@
 // This is a comma separated list (with no spaces) of all supported languages.
 // if you want to add another, make sure to add it to this list.
-// Make sure that the language name matches the folder name you have in translations,
-// after that, bump the version number under ver.json and change the one in
-// /en/global.json accordingly, so the cache gets invalidated.
+// Make sure that the language name matches the folder name you have in translations.
 const languages = "en,pt";
 // --------------------------------------Do not modify past this--------------------------------------
 let languageCount = 0;
@@ -10,41 +8,15 @@ let loadedLanguages = 0;
 let languagesLoaded = false;
 const elements = [];
 let lang = localStorage.getItem("lang") || "en";
-let cacheJSON = localStorage.getItem("cache");
-let cache = JSON.parse(cacheJSON);
 const translations = {};
 // Always call this function to fetch translations
 // I was going to make it hard-coded but decided that
 // It's best if you can decide what files to use
 // per page, so you won't have to cram everything
 // into the same json file.
-async function checkCache(json, fileName) {
-  if (loadedLanguages != languageCount) {
-    console.log(
-      "Waiting for lang files to load \n This may cause text to not appear temporarily."
-    );
-    await waitFor(() => languagesLoaded == true);
-    checkCache(json, cache, fileName);
-    return;
-  }
-  const ver = cache["en"]["global.json"]["version"];
-  console.log(
-    "cache's version is " + ver + ", uncached version is " + json.version
-  );
-  if (json.version > ver || ver == undefined) {
-    console.log("invalidating cache");
-    fetchTranslations(fileName, true);
-    changeLang(lang);
-  }
-}
-function fetchTranslations(fileName, ignoreCache) {
-  if (ignoreCache) {
-    cacheJSON = undefined;
-    cache = undefined;
-    loadedLanguages = 0;
-    languageCount = 0;
-    languagesLoaded = false;
-  }
+function fetchTranslations(fileName) {
+  let cacheJSON = localStorage.getItem("cache");
+  let cache;
   for (currentLang of languages.split(",")) {
     console.log("iterating thru " + currentLang);
     let globalCached;
@@ -52,6 +24,7 @@ function fetchTranslations(fileName, ignoreCache) {
     let global;
     let file;
     if (!(cacheJSON == undefined)) {
+      cache = JSON.parse(cacheJSON);
       const langIndex = cache[currentLang];
       if (!(langIndex == undefined)) {
         // There is something cached for this language
@@ -75,11 +48,9 @@ function fetchTranslations(fileName, ignoreCache) {
           );
           translations[actualLang] = { ...translations[actualLang], ...json };
           if (cache == undefined) {
-            console.log("undefined cache");
             cache = {};
           }
           if (cache[actualLang] == undefined) {
-            console.log("undefined cache lang");
             cache[actualLang] = {};
           }
           cache[actualLang][fileName] = json;
@@ -108,11 +79,9 @@ function fetchTranslations(fileName, ignoreCache) {
           console.log("fetching cache for global.json in lang " + actualLang);
           translations[actualLang] = { ...translations[actualLang], ...json };
           if (cache == undefined) {
-            console.log("undefined cache");
             cache = {};
           }
           if (cache[actualLang] == undefined) {
-            console.log("undefined cache lang");
             cache[actualLang] = {};
           }
           cache[actualLang]["global.json"] = json;
@@ -135,12 +104,6 @@ function fetchTranslations(fileName, ignoreCache) {
       }
     }
   }
-  fetch("translations/ver.json").then(function (res) {
-    res.json().then(function (json) {
-      console.log("checking cache");
-      checkCache(json, fileName);
-    });
-  });
 }
 // Gotta do this since it takes time to fetch the json files.
 // Can't just await everything since this isn't a module
