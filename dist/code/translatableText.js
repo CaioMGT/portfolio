@@ -15,17 +15,16 @@ const translations = {};
 // per page, so you won't have to cram everything
 // into the same json file.
 function fetchTranslations(fileName) {
-  let cacheJSON = localStorage.getItem("cache");
-  let cache;
   for (currentLang of languages.split(",")) {
-    console.log("iterating thru " + currentLang);
     let globalCached;
     let fileCached;
     let global;
     let file;
+    let cacheJSON = localStorage.getItem("cache");
+    let cache;
     if (!(cacheJSON == undefined)) {
       cache = JSON.parse(cacheJSON);
-      const langIndex = cache[currentLang];
+      const langIndex = cache[lang];
       if (!(langIndex == undefined)) {
         // There is something cached for this language
         global = langIndex["global.json"];
@@ -38,23 +37,24 @@ function fetchTranslations(fileName) {
         }
       }
     }
+    console.log("iterating thru " + currentLang);
     languageCount += 2;
     const actualLang = currentLang;
     if (!fileCached) {
       fetch("translations/" + actualLang + "/" + fileName).then(function (val) {
         val.json().then(function (json) {
-          console.log(
-            "fetching cache for " + fileName + " in lang " + actualLang
-          );
           translations[actualLang] = { ...translations[actualLang], ...json };
           if (cache == undefined) {
             cache = {};
           }
           if (cache[actualLang] == undefined) {
             cache[actualLang] = {};
+            console.log("cache was null, now it is " + cache[actualLang]);
           }
+          console.log("cache after defining is " + cache[actualLang]);
           cache[actualLang][fileName] = json;
           localStorage.setItem("cache", JSON.stringify(cache));
+          console.log(translations[actualLang]);
           loadedLanguages++;
           if (loadedLanguages == languageCount) {
             languagesLoaded = true;
@@ -76,7 +76,6 @@ function fetchTranslations(fileName) {
     if (!globalCached) {
       fetch("translations/" + actualLang + "/global.json").then(function (val) {
         val.json().then(function (json) {
-          console.log("fetching cache for global.json in lang " + actualLang);
           translations[actualLang] = { ...translations[actualLang], ...json };
           if (cache == undefined) {
             cache = {};
@@ -96,7 +95,7 @@ function fetchTranslations(fileName) {
     } else {
       // is cached, use cache instead.
       console.log("global.json is cached, using cache");
-      translations[currentLang] = { ...translations[currentLang], ...global };
+      translations[lang] = { ...translations[lang], ...global };
       loadedLanguages++;
       if (loadedLanguages == languageCount) {
         languagesLoaded = true;
@@ -126,6 +125,7 @@ async function update(transText) {
     update(transText);
     return;
   }
+  console.log("ee");
   string = translations[lang][transText.id];
   if (string == null) {
     console.log(
