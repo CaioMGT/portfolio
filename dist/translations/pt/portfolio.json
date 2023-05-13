@@ -1,1 +1,9 @@
-{}
+{
+  "portfolio-intro": "Coisas que eu fiz",
+  "script-tabs-desc": "Script Tabs é um plugin que criei para ajudar meu desenvolvimento no Roblox.\n Descobri que organizar o meu código, especialmente em grandes quantidades, era uma tarefa enorme,\n já que era preciso muita atenção e re-organização para evitar tempo gasto olhando por algo em especifico. \n Esse plugin é uma maneira de resolver tal problema, deixando o usuario a fazer \"abas\" que podem ser\n navigadas automáticamente com um simples clique\n Foi muito útil em arquivos com mais de 300 linhas de código, pois eu tinha uma aba para cada porção do arquivo,\n dividindo o que antes era algo gigante em pedaços pequenos,\n então pensei em lançar o plugin para o publico, já que alguem também pode ter esse mesmo problema!\n Esse plugin é publico, se quiser usa-lo, só clique no titulo.",
+  "world-gen": "Geração de Mundo",
+  "world-gen-desc": "Isso mostra um gerador de mundos, que é gerado uma vez quando o servidor é aberto.\nPara fazer isso, eu usei perlin noise para sempre gerar um mundo único,\n semelhante a o que outros jogos como Minecraft fazem. Usei o sistema de terrenos do Roblox\n para sempre garantir uma superficie lisa de grama, areia ou pedras.\n Isso também garante que jogadores possam nadar na água!\nEsse jogo é publico, se quiser testa-lo, clique no titulo.",
+  "tower-defense-title": "Inteligência artificial de Tower defense",
+  "tower-defense-desc": "Isso foi uma comissão que fiz para alguem:\nEles me pediram para criar uma Inteligência Artificial para Tower Defense que seguia pontos pre-definidos\naté que chegassem ao fim, onde eles dariam dano a torre final.\n O video mostra exatamente isso. Normalmente os pontos não são mostrados, somente aparecem para razões de teste. \n Esse jogo é publico, se quiser testa-lo, clique no titulo.\n(Os inimigos somente seguem o caminho uma vez, se já acabaram,\nvocê terá que re-entrar.)",
+  "wip": "Essa seção ainda está em desenvolvimento, volte depois para ver um pouco mais!"
+}
