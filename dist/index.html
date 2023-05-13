@@ -148,9 +148,14 @@ files are humongous, my code is actually way at the bottom. If you want a link, 
     </div>
     <!--This section is when you scroll down-->
     <div class="text-black dark:text-white">
-      <h2 class="py-8 roboto text-center font-light text-4xl fade-in-section">
-        <br /><br /><br /><br />I am part of two Roblox groups:
-      </h2>
+      <div class="py-8 text-center font-light">
+        <trans-text
+          id="roblox-groups-intro"
+          class="roboto text-center font-light text-4xl fade-in-section"
+        >
+        </trans-text>
+      </div>
+
       <br /><br />
       <!--A fade in section only pops up when it is in view, the class is what handles that action. If you want to take a look at how it works, check fadeInOnScroll.js-->
       <div class="fade-in-section">
@@ -171,57 +176,17 @@ files are humongous, my code is actually way at the bottom. If you want a link, 
           />
           <div class="flex flex-col px-2">
             <!--I need to create another flex for the text so they can be vertical-->
-            <h3 class="roboto">
-              <span class="font-bold"> Position:</span> Creator, Lead Developer
-            </h3>
-            <h3 class="roboto">
-              DevNet Studios is a Studio I created to seek my own personal
-              projects. Unfortunately, our only game is currently on hold, due
-              to my lack of level design skills. <br />
-              I hope to continue DevNet Studios in a near future, as I create
-              more connections and find more talent <br />
-            </h3>
+            <trans-text id="devnet-desc"></trans-text>
           </div>
         </div>
         <br />
       </div>
-      <div class="fade-in-section text-right">
-        <a
-          href="https://www.roblox.com/groups/16560176/KnockOff-Studio#!/about"
-          target="_blank"
-          class="roboto text-4xl text-black dark:text-white mr-8"
-          >KnockOff Studio</a
-        >
-        <div class="flex flex-row-reverse pt-2 px-10 disableIfLowWidth">
-          <img
-            class="h-[210.5px] w-[400px] shadow-light md:h-[140.333333px] md:w-[266.666667px]"
-            src="./img/knockofflogo.png"
-            alt="KnockOff Studios Logo"
-          />
-          <div class="flex flex-col px-2">
-            <h3 class="roboto">
-              <span class="font-bold">Position:</span> Co-Founder, Lead
-              Programmer
-            </h3>
-            <h3 class="roboto">
-              KnockOff Studio is a group created by me and my friend Jordan.<br />
-              We're currently working on a game, but I can't tell you much about
-              it. All I can tell you is it'll be good! <br />
-              This is where I spend most of my time developing on Roblox on.
-              <br />
-              I handle everything related to programming here, using tools like
-              Rojo, Wally, etc...
-            </h3>
-          </div>
-        </div>
       </div>
-      <br />
-      <h2 class="text-center">
-        I have a lot of random projects, you can check them out on my
-        <a class="text-neutral-400 dark:text-gray-400" href="/portfolio"
-          >Portfolio</a
-        >.
-      </h2>
+      <br/>
+      <div class="text-center text-black dark:text-white">
+        <trans-text id="random-projects"></trans-text>
+        <a class="text-neutral-400 dark:text-gray-400" href="/portfolio"><trans-text id="portfolio"></a>
+      </div>
     </div>
     <bottom-bar></bottom-bar>
   </body>
