@@ -1,0 +1,9 @@
+{
+  "portfolio-intro": "Stuff I worked on",
+  "script-tabs-desc": "Script Tabs is a plugin I wrote to satisfy my development needs in roblox.\n I found that organizing my code, specially in big portions, was a humongous task,\n due to the amount of scrolling (and looking around) that was necessary. \n This plugin aims to solve this issue, by allowing user defined \"tabs\" that can be\n navigated to automatically at the press of a button\n \n I found it very useful in big scripts, that reached over 300 lines to portion\n my code down to bite size chunks, so I thought to release the plugin to whoever else needs it!\n This plugin is public, if you want to check it out, click on the title.",
+  "world-gen": "World Generation",
+  "world-gen-desc": "This showcases a world generator, that is ran once the server starts.\nTo accomplish this, I used perlin noise to always generate a unique world,\n similar to what games like Minecraft do. It uses Roblox's Terrain system\n to always generate a smooth surface of grass, sand or rocks.\n This ensures that the players can also swim in the water!\n\nThis game is public, if you want to check it out, click on the title.",
+  "tower-defense-title": "Tower defense AI",
+  "tower-defense-desc": "This was a commission I made for someone:\nThey requested me to create a Tower Defense AI that followed waypoints\nuntil they reached the end, where they would deal damage to the end tower.\n This showcases exactly that. The waypoints are visible only for testing purposes. \n\n\n This game is public, if you want to check it out, click on the title.\n(The enemies only follow the path once, if they're already finished,\nyou will have to rejoin.)",
+  "wip": "This section is still a Work In Progress, check it out later to see more!"
+}

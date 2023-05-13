@@ -1,73 +1,104 @@
 <!DOCTYPE html>
 <html id="html" class="dark" lang="en">
-    <head>
-        <link rel="stylesheet" href="/main.css">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
-        <script src="/code/thememgr.js"></script>
-        <script src="/code/bars.js"></script>
-        <script src="/code/fadeInOnScroll.js"></script>
-        <title>Portfolio</title>
-        <script defer>
-            // Adjust text to go downwards if screen is small.
-            window.addEventListener("resize", function() {
-                for (div of document.getElementsByClassName("disableIfLowWidth")) {
-                if (window.innerWidth <= 1300) {
-                    div.style.display = "block"
-                    div.style.textAlign = "left"
-                } else {
-                    div.style.display = "flex"
-                }
-            }
-        })            
-        </script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="application-name" content="Portfolio">
-        <meta name="description" content="If you're interested in hiring me, you better check this out!">
-        <meta name="author" content="Caio">
-        <meta name="keywords" content="CaioMGT, Caio, Programming, Roblox, Lua, C#, Python, Programmer, Portfolio">
-    </head>
-    <body class="bg-neutral-300 dark:bg-neutral-800 text-black dark:text-white roboto">
-        <top-nav active-button="portfolio"></top-nav>
-        <h1 class="text-blue-400 dark:text-blue-300 text-center text-7xl font-thin glowBlue fadein py-2">Stuff I worked on</h1>
-        <div class="text-center fadein pt-8"><a class="text-2xl font-light" href="https://www.roblox.com/library/11969929200/Script-Tabs" target="_blank">Script Tabs</a></div>
-        <div class="flex flex-row px-4 fadein disableIfLowWidth">
-            <video src="/video/scripttabs.mp4" class="w-[480px] h-[270px] border-4 border-black dark:border-white rounded-md" controls></video>
-            <h2 class="pl-2">Script Tabs is a plugin I wrote to satisfy my development needs in roblox. <br>
-                I found that organizing my code, specially in big portions, was a humongous task, <br>
-                due to the amount of scrolling (and looking around) that was necessary. <br>
-                This plugin aims to solve this issue, by allowing user defined "tabs" that can be <br> 
-                navigated to automatically at the press of a button<br> <br>
-                I found it very useful in big scripts, that reached over 300 lines to portion<br> 
-                my code down to bite size chunks, so I thought to release the plugin to whoever else needs it!<br>
-                This plugin is public, if you want to check it out, click on the title.
-            </h2>
-        </div>
-        <div class="text-center fadein pt-8"><a class="text-2xl font-light" href="https://www.roblox.com/games/11201460797/World-generation-showcase" target="_blank">World Generation</a></div>
-        <div class="flex flex-row px-4  fadein disableIfLowWidth fade-in-section">
-            <video src="/video/worldgen.mp4" class="w-[480px] h-[270px] border-4 border-black dark:border-white rounded-md" controls></video>
-            <h2 class="pl-2">This showcases a world generator, that is ran once the server starts. <br>
-                To accomplish this, I used perlin noise to always generate a unique world, <br>
-                similar to what games like Minecraft do. It uses Roblox's Terrain system <br>
-                to always generate a smooth surface of grass, sand or rocks.<br>
-                This ensures that the players can also swim in the water!
-                <br><br>
-                This game is public, if you want to check it out, click on the title.
-            </h2>
-        </div>
-        <div class="text-center fadein pt-8 fade-in-section"><a class="text-2xl font-light" href="https://www.roblox.com/games/5586463947/Tower-defense-stuff" target="_blank">Tower defense AI</a></div>
-        <div class="flex flex-row px-4 fadein fade-in-section disableIfLowWidth">
-            <video src="/video/towerdefense.mp4" class="w-[480px] h-[270px] border-4 border-black dark:border-white rounded-md" controls></video>
-            <h2 class="pl-2">This was a commission I made for someone: <br>
-                They requested me to create a Tower Defense AI that followed waypoints <br>
-                until they reached the end, where they would deal damage to the end tower. <br>
-                This showcases exactly that. The waypoints are visible only for testing purposes. <br>
-                <br><br>
-                This game is public, if you want to check it out, click on the title. <br>
-                (The enemies only follow the path once, if they're already finished, <br>
-                you will have to rejoin.)
-            </h2>
-        </div>
-        <h2 class="text-center text-2xl pt-20">This section is still a Work In Progress, check it out later to see more!</h2>
-        <bottom-bar></bottom-bar>
-    </body>
+  <head>
+    <link rel="stylesheet" href="/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <script src="/code/thememgr.js"></script>
+    <script src="/code/bars.js"></script>
+    <script src="/code/fadeInOnScroll.js"></script>
+    <script src="/code/translatableText.js"></script>
+    <title>Portfolio</title>
+    <script defer>
+      // Adjust text to go downwards if screen is small.
+      window.addEventListener("resize", function () {
+        for (div of document.getElementsByClassName("disableIfLowWidth")) {
+          if (window.innerWidth <= 1300) {
+            div.style.display = "block";
+            div.style.textAlign = "left";
+          } else {
+            div.style.display = "flex";
+          }
+        }
+      });
+    </script>
+    <script>
+      fetchTranslations("portfolio.json");
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="application-name" content="Portfolio" />
+    <meta
+      name="description"
+      content="If you're interested in hiring me, you better check this out!"
+    />
+    <meta name="author" content="Caio" />
+    <meta
+      name="keywords"
+      content="CaioMGT, Caio, Programming, Roblox, Lua, C#, Python, Programmer, Portfolio"
+    />
+  </head>
+  <body
+    class="bg-neutral-300 dark:bg-neutral-800 text-black dark:text-white roboto"
+  >
+    <top-nav active-button="portfolio"></top-nav>
+    <div
+      class="text-blue-400 dark:text-blue-300 text-center text-7xl font-thin glowBlue fadein py-2"
+    >
+      <trans-text id="portfolio-intro"></trans-text>
+    </div>
+    <div class="text-center fadein pt-8">
+      <a
+        class="text-2xl font-light"
+        href="https://www.roblox.com/library/11969929200/Script-Tabs"
+        target="_blank"
+        >Script Tabs</a
+      >
+    </div>
+    <div class="flex flex-row px-4 fadein disableIfLowWidth">
+      <video
+        src="/video/scripttabs.mp4"
+        class="w-[480px] h-[270px] border-4 border-black dark:border-white rounded-md mr-2"
+        controls
+      ></video>
+      <trans-text id="script-tabs-desc"></trans-text>
+    </div>
+    <div class="text-center fadein pt-8">
+      <a
+        class="text-2xl font-light"
+        href="https://www.roblox.com/games/11201460797/World-generation-showcase"
+        target="_blank"
+        ><trans-text id="world-gen"></trans-text
+      ></a>
+    </div>
+    <div class="flex flex-row px-4 fadein disableIfLowWidth fade-in-section">
+      <video
+        src="/video/worldgen.mp4"
+        class="w-[480px] h-[270px] border-4 border-black dark:border-white rounded-md mr-2"
+        controls
+      ></video>
+      <trans-text id="world-gen-desc"></trans-text>
+    </div>
+    <div class="text-center fadein pt-8 fade-in-section">
+      <a
+        class="text-2xl font-light"
+        href="https://www.roblox.com/games/5586463947/Tower-defense-stuff"
+        target="_blank"
+        ><trans-text id="tower-defense-title"></trans-text
+      ></a>
+    </div>
+    <div class="flex flex-row px-4 fadein fade-in-section disableIfLowWidth">
+      <video
+        src="/video/towerdefense.mp4"
+        class="w-[480px] h-[270px] border-4 border-black dark:border-white rounded-md mr-2"
+        controls
+      ></video>
+      <trans-text id="tower-defense-desc"></trans-text>
+    </div>
+    <div class="text-center text-2xl pt-20">
+      <trans-text id="wip"></trans-text>
+    </div>
+    <bottom-bar></bottom-bar>
+  </body>
 </html>
