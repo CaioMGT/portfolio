@@ -19,7 +19,7 @@ function fetchTranslations(fileName) {
     console.log("iterating thru " + currentLang);
     languageCount += 2;
     const actualLang = currentLang;
-    fetch("translations/" + actualLang + "/" + fileName).then(function (val) {
+    fetch("/translations/" + actualLang + "/" + fileName).then(function (val) {
       val.json().then(function (json) {
         translations[actualLang] = { ...translations[actualLang], ...json };
         loadedLanguages++;
@@ -29,7 +29,7 @@ function fetchTranslations(fileName) {
         }
       });
     });
-    fetch("translations/" + actualLang + "/global.json").then(function (val) {
+    fetch("/translations/" + actualLang + "/global.json").then(function (val) {
       val.json().then(function (json) {
         translations[actualLang] = { ...translations[actualLang], ...json };
         loadedLanguages++;
