@@ -17,6 +17,7 @@ function summonPosts(list) {
       box.appendChild(postThing);
     }
   }
+  updateBottomBarPos();
 }
 getPosts().then(function () {
   postsLoaded = true;

@@ -18,6 +18,7 @@ function populatePage() {
   box.attachShadow({ mode: "open" });
   box.innerText = "";
   box.shadowRoot.innerHTML = marked.parse(post.content);
+  updateBottomBarPos();
 }
 async function getPost() {
   console.log(postId);

@@ -233,12 +233,22 @@ function funFactBar() {
   bar.appendChild(fact);
   return bar;
 }
+let bar;
+function updateBottomBarPos() {
+  if (document.body.getBoundingClientRect().height <= window.innerHeight) {
+    bar.style.position = "absolute";
+    bar.style.bottom = "0px";
+    bar.classList.add("popdown");
+  } else {
+    bar.style.position = "static";
+  }
+}
 class BottomBar extends HTMLElement {
   constructor() {
     super();
   }
   connectedCallback() {
-    const bar = document.createElement("div");
+    bar = document.createElement("div");
     bar.className =
       "bg-neutral-100 dark:bg-neutral-900 w-full flex flex-row-reverse gap-x-6 roboto text-black dark:text-white mt-10";
     bar.style.height = "100px;";
@@ -247,11 +257,7 @@ class BottomBar extends HTMLElement {
     const funFact = funFactBar();
     bar.appendChild(funFact);
     this.appendChild(bar);
-    if (document.body.getBoundingClientRect().height <= window.innerHeight) {
-      bar.style.position = "absolute";
-      bar.style.bottom = "0px";
-      bar.classList.add("popdown");
-    }
+    updateBottomBarPos();
   }
 }
 customElements.define("bottom-bar", BottomBar);
