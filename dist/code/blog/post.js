@@ -18,7 +18,22 @@ function populatePage() {
   box.attachShadow({ mode: "open" });
   box.innerText = "";
   box.shadowRoot.innerHTML = marked.parse(post.content);
+  const codeStyle = document.createElement("link");
+  codeStyle.rel = "stylesheet";
+  if (theme == Enum.DARK) {
+    codeStyle.href =
+      "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css";
+  } else {
+    codeStyle.href =
+      "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css";
+  }
   updateBottomBarPos();
+  let blocks = box.shadowRoot.querySelectorAll("pre code");
+  for (let i = 0; i < blocks.length; i++) {
+    blocks[i].style.textAlign = "left";
+    hljs.highlightElement(blocks[i]);
+  }
+  box.shadowRoot.appendChild(codeStyle);
 }
 async function getPost() {
   console.log(postId);
