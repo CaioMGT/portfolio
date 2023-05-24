@@ -27,12 +27,15 @@ function populatePage() {
     codeStyle.href =
       "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css";
   }
+  const postStyle = document.createElement("link");
+  postStyle.rel = "stylesheet";
+  postStyle.href = "/post.css";
   updateBottomBarPos();
   let blocks = box.shadowRoot.querySelectorAll("pre code");
   for (let i = 0; i < blocks.length; i++) {
-    blocks[i].style.textAlign = "left";
     hljs.highlightElement(blocks[i]);
   }
+  box.shadowRoot.appendChild(postStyle);
   box.shadowRoot.appendChild(codeStyle);
 }
 async function getPost() {
