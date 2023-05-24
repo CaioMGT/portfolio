@@ -1,3 +1,4 @@
+const apiUrl = "https://api.caiomgt.com/";
 const postId = new URL(document.location).searchParams.get("id");
 let post;
 var day;
@@ -40,7 +41,7 @@ function populatePage() {
 }
 async function getPost() {
   console.log(postId);
-  thing = await fetch("https://api.caiomgt.com/getPost", {
+  thing = await fetch(apiUrl + "getPost", {
     headers: { "Content-Type": "application/json" },
     method: "POST",
     body: JSON.stringify({ id: postId }),

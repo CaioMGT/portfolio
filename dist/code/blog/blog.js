@@ -1,10 +1,11 @@
 let isAdmin = false;
+let adminChecked = false;
 let postsLoaded = false;
 let domLoaded = false;
 let postList;
+const apiUrl = "https://api.caiomgt.com/";
 async function getPosts() {
-  postList = (await (await fetch("https://api.caiomgt.com/getPosts")).json())
-    .post;
+  postList = (await (await fetch(apiUrl + "getPosts")).json()).post;
 }
 function summonPosts(list) {
   const box = document.getElementById("postBox");
@@ -22,21 +23,21 @@ function summonPosts(list) {
 getPosts().then(function () {
   postsLoaded = true;
   console.log("loaded posts. is dom loaded? " + domLoaded);
-  if (domLoaded) {
+  if (domLoaded && adminChecked) {
     summonPosts(postList);
   }
 });
 window.addEventListener("load", function () {
   domLoaded = true;
   console.log("loaded dom. is posts loaded? " + postsLoaded);
-  if (postsLoaded) {
+  if (postsLoaded && adminChecked) {
     summonPosts(postList);
   }
 });
 async function checkIfAdmin(password) {
   const hash = await getSHA256Hash(password);
   console.log(hash);
-  const response = await fetch("https://api.caiomgt.com/validatePassword", {
+  const response = await fetch(apiUrl + "validatePassword", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ auth: hash }),
@@ -56,7 +57,7 @@ const getSHA256Hash = async (input) => {
   return hash;
 };
 async function deletePost(postId) {
-  const response = await fetch("https://api.caiomgt.com/removePost", {
+  const response = await fetch(apiUrl + "removePost", {
     headers: { "Content-Type": "application/json" },
     method: "POST",
     body: JSON.stringify({
@@ -80,8 +81,17 @@ function createPostPreview(post) {
   desc.style.fontWeight = "300";
   title.appendChild(desc);
   bg.appendChild(title);
+  const flex = document.createElement("div");
+  flex.classList.add("flex");
+  flex.classList.add("flex-row-reverse");
+  const postDate = document.createElement("span");
+  const date = new Date(post.postDate);
+  const day = date.getDate().toString().padStart(2, "0");
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  postDate.innerText = day + "/" + month + "/" + date.getFullYear();
+  flex.appendChild(postDate);
   if (isAdmin) {
-    console.log("is admin, creating delete button");
+    console.log("is admin, creating delete and edit button");
     const del = document.createElement("button");
     del.innerText = "Delete";
     del.style.fontSize = "medium";
@@ -91,13 +101,21 @@ function createPostPreview(post) {
         bg.parentNode.removeChild(bg);
       }
     };
-    bg.appendChild(del);
+    const edit = document.createElement("a");
+    edit.innerText = "Edit";
+    edit.style.fontSize = "medium";
+    edit.className = "editButton";
+    edit.href = "/blog/createPost?edit=" + post._id;
+    flex.appendChild(del);
+    flex.appendChild(edit);
   }
+  bg.appendChild(flex);
   return bg;
 }
 
 if (localStorage.getItem("password")) {
   checkIfAdmin(localStorage.getItem("password")).then((thing) => {
+    adminChecked = true;
     if (thing) {
       // Is admin, un-hide create / delete post buttons.
       isAdmin = true;
@@ -109,4 +127,7 @@ if (localStorage.getItem("password")) {
       console.log("not your mom");
     }
   });
+  if (postsLoaded && domLoaded) {
+    summonPosts(postList);
+  }
 }
