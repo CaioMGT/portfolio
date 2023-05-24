@@ -130,4 +130,6 @@ if (localStorage.getItem("password")) {
   if (postsLoaded && domLoaded) {
     summonPosts(postList);
   }
+} else {
+  adminChecked = true;
 }
