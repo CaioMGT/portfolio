@@ -156,6 +156,14 @@ function contactInfo(bar) {
     true,
     "mailto:caio@caiomgt.com"
   );
+  const kofi = createContainer(
+    "https://storage.ko-fi.com/cdn/cup-border.png",
+    "Buy me a Coffee",
+    true,
+    "https://ko-fi.com/caiomgt"
+  );
+  kofi.children[0].style.width = "30px";
+  kofi.children[0].style.marginLeft = "1px"; // for some reason it looks better like this
   if (theme == Enum.DARK) {
     github.children[0].src = "/svg/github-white.svg";
     email.children[0].style.filter = "invert(100%)";
@@ -184,6 +192,7 @@ function contactInfo(bar) {
   div.appendChild(discord);
   div.appendChild(github);
   div.appendChild(email);
+  div.appendChild(kofi);
   return div;
 }
 const facts = [
