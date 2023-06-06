@@ -9,8 +9,16 @@ async function getPosts() {
 }
 function summonPosts(list) {
   const box = document.getElementById("postBox");
+  const sortedList = list;
+  // currently using descending sort, might add a toggle for this later?
+  sortedList.sort((a, b) => {
+    console.log("sorting following objects: " + a.postDate + ", " + b.postDate);
+    const date1 = new Date(a.postDate);
+    const date2 = new Date(b.postDate);
+    return date1 > date2 ? -1 : 1;
+  });
   box.innerText = "";
-  for (post of list) {
+  for (post of sortedList) {
     if (post._id != null) {
       // for some reason the response is returning a random prototype
       // along with the posts so i have to do this.
