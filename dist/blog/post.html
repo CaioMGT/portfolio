@@ -26,6 +26,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script>
       fetchTranslations("blank.json");
+      addEventListener("load", () => {
+        if (
+          document.body.getBoundingClientRect().height <= window.innerHeight
+        ) {
+          bar.style.position = "absolute";
+          bar.style.bottom = "0px";
+        } else {
+          bar.style.position = "static";
+        }
+      });
     </script>
     <title>Blog</title>
   </head>
