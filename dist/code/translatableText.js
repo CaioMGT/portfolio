@@ -19,26 +19,34 @@ function fetchTranslations(fileName) {
     console.log("iterating thru " + currentLang);
     languageCount += 2;
     const actualLang = currentLang;
-    fetch("/translations/" + actualLang + "/" + fileName).then(function (val) {
-      val.json().then(function (json) {
-        translations[actualLang] = { ...translations[actualLang], ...json };
-        loadedLanguages++;
-        if (loadedLanguages == languageCount) {
-          languagesLoaded = true;
-          console.log("all languages loaded!");
-        }
+    fetch("/translations/" + actualLang + "/" + fileName)
+      .then(function (val) {
+        val.json().then(function (json) {
+          translations[actualLang] = { ...translations[actualLang], ...json };
+          loadedLanguages++;
+          if (loadedLanguages == languageCount) {
+            languagesLoaded = true;
+            console.log("all languages loaded!");
+          }
+        });
+      })
+      .catch((reason) => {
+        console.log(reason);
       });
-    });
-    fetch("/translations/" + actualLang + "/global.json").then(function (val) {
-      val.json().then(function (json) {
-        translations[actualLang] = { ...translations[actualLang], ...json };
-        loadedLanguages++;
-        if (loadedLanguages == languageCount) {
-          languagesLoaded = true;
-          console.log("all languages loaded!");
-        }
+    fetch("/translations/" + actualLang + "/global.json")
+      .then(function (val) {
+        val.json().then(function (json) {
+          translations[actualLang] = { ...translations[actualLang], ...json };
+          loadedLanguages++;
+          if (loadedLanguages == languageCount) {
+            languagesLoaded = true;
+            console.log("all languages loaded!");
+          }
+        });
+      })
+      .catch((reason) => {
+        console.log(reason);
       });
-    });
   }
 }
 // Gotta do this since it takes time to fetch the json files.
