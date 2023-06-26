@@ -143,7 +143,7 @@ function contactInfo(bar) {
   const text = document.createElement("trans-text");
   text.id = "contact";
   //contact.innerText = "Contact:";
-  const discord = createContainer("/svg/discord.svg", "capetaanal#1984");
+  const discord = createContainer("/svg/discord.svg", "ellie_is_jelly");
   const github = createContainer(
     "/svg/github-dark.svg",
     "CaioMGT",
