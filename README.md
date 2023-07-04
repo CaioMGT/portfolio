@@ -1,11 +1,5 @@
-# My personal website
+# Website!
 
-This is the git repository for my website, that is deployed using Github Pages  
-The production branch is main, please don't target experimental code towards that branch.
+This is the git repository for my website, made using SolidJS, TailwindCSS and Motion One for Solid, now new and improved!
 
----
-
-## Goals
-
-- Make portfolio
-- Have fun
+Credits: me, the people that made the libraries i use
