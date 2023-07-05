@@ -4,7 +4,7 @@ const date = new Date();
 const birthday = new Date("April 10 2008");
 let age = date.getFullYear() - birthday.getFullYear();
 if (date.getMonth() <= birthday.getMonth()) {
-  // not hit birthday month, should subtract one from age.
+  // birthday month not hit, should subtract one from age.
   age--;
 }
 export default function () {
@@ -20,7 +20,11 @@ export default function () {
           <div class="text-1xl">Here's a little about me:</div>
           <div>
             I'm a {age} year old from Brazil, well-versed in programming both
-            front-end and back-end applications.
+            front-end and back-end applications. Starting at an early age, I've
+            started developing applications at the age of 10, with the goal of
+            becoming a professional programmer. I'm currently still on that path
+            and plan to major in Computer Science. I'm trans and use She/Her
+            pronouns.
           </div>
         </div>
       </div>
