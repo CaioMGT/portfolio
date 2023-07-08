@@ -16,20 +16,24 @@ export default function () {
         <div class="my-12 text-slate-300">
           <Motion
             class="text-6xl text-white"
-            animate={{ x: [-500, -500, 0] }}
-            transition={{ duration: 1, x: { offset: [0, 0.5, 1] } }}
+            animate={{
+              transform: ["translateX(-500px)", null, "translateX(0px)"],
+            }}
+            transition={{ duration: 1, transform: { offset: [0, 0.5, 1] } }}
           >
             Hi, I'm <span class="glow text-pink-200">Ellie</span>
           </Motion>
           <Motion
             class="text-2xl"
-            animate={{ x: [-500, -500, 0] }}
-            transition={{ duration: 2, x: { offset: [0, 0.5, 1] } }}
+            animate={{
+              transform: ["translateX(-500px)", null, "translateX(0px)"],
+            }}
+            transition={{ duration: 2, transform: { offset: [0, 0.5, 1] } }}
           >
             Programmer, UI Designer
           </Motion>
           <Motion
-            animate={{ opacity: [0, 0, 1] }}
+            animate={{ opacity: [0, null, 1] }}
             transition={{ duration: 4, opacity: { offset: [0, 0.75, 1] } }}
           >
             <div class="text-1xl">Here's a little about me:</div>
