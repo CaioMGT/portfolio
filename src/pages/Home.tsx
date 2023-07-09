@@ -12,7 +12,7 @@ export default function () {
   return (
     <div>
       <Topbar activeButton=""></Topbar>
-      <div class="md:grid grid-cols-2 mx-4 px-8 h-full justify-center overflow-x-hidden">
+      <div class="md:grid grid-cols-2 mx-4 px-8 justify-center overflow-x-hidden my-12">
         <div class="my-12 text-slate-300 lg:pr-32 xl:pr-64">
           {/* I have to animate transform because the motion one wiki says using x: is not hardware accelerated,
               which is a no-no for performance. 
@@ -55,9 +55,9 @@ export default function () {
           <Motion
             class="text-6xl text-white pb-2"
             animate={{
-              transform: ["translateX(1000px)", null, "translateX(0px)"],
+              opacity: ["0", null, "1"],
             }}
-            transition={{ duration: 4, transform: { offset: [0, 0.8, 1] } }}
+            transition={{ duration: 6, opacity: { offset: [0, 0.8, 1] } }}
           >
             My <span class="glow text-pink-200">Likes </span>
           </Motion>
