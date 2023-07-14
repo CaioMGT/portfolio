@@ -63,7 +63,7 @@ export default function () {
           </Motion>
           <Motion
             animate={{ opacity: [0, null, 1] }}
-            transition={{ duration: 6, opacity: { offset: [0, 0.9, 1] } }}
+            transition={{ duration: 6, opacity: { offset: [0, 0.8, 1] } }}
           >
             I like playing video games, developing them and generally anything
             tech-related. I've experimented with a little bit of hardware
@@ -75,6 +75,29 @@ export default function () {
           </Motion>
         </div>
       </div>
+      <Motion
+        class="text-4xl text-center"
+        animate={{
+          transform: [
+            "translateY(500px)",
+            null,
+            screen.availHeight < 768
+              ? "translateY(0px)"
+              : screen.availHeight < 900
+              ? "translateY(100px)"
+              : "translateY(200px)",
+          ],
+          opacity: [0, null, 1],
+        }}
+        transition={{
+          duration: 6,
+          transform: { offset: [0, 0.9, 1] },
+          opacity: { offset: [0, 0.9, 0.9] },
+        }}
+      >
+        Take a look at some stuff I did:
+      </Motion>
+      <Motion initial={false} animate={{ x: 100 }}></Motion>
     </div>
   );
 }
