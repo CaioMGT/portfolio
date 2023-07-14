@@ -44,7 +44,7 @@ export default function () {
           </div>
         </div>
       </div>
-      <div class="popUp text-4xl text-center">
+      <div class="popUp text-4xl text-center md:py-32">
         Take a look at some stuff I did:
       </div>
     </div>
