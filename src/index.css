@@ -18,7 +18,81 @@ code {
   -moz-animation: glow 1s ease-in-out infinite alternate;
   animation: glow 1s ease-in-out infinite alternate;
 }
+.popLeft {
+  -webkit-animation: popLeft 1s ease-in-out;
+  -moz-animation: popLeft 1s ease-in-out;
+  animation: popLeft 1s ease-in-out;
+}
+.popLeftLong {
+  -webkit-animation: popLeft 2s ease-in-out;
+  -moz-animation: popLeft 2s ease-in-out;
+  animation: popLeft 2s ease-in-out;
+}
+.fadeLong {
+  -webkit-animation: fadeLater 4s ease-in-out;
+  -moz-animation: fadeLater 4s ease-in-out;
+  animation: fadeLater 4s ease-in-out;
+}
+.fadeLonger {
+  -webkit-animation: fadeLater 6s ease-in-out;
+  -moz-animation: fadeLater 6s ease-in-out;
+  animation: fadeLater 6s ease-in-out;
+}
+.popUp {
+  -webkit-animation: popUp 8s ease-in-out;
+  -moz-animation: popUp 8s ease-in-out;
+  animation: popUp 8s ease-in-out;
+}
+.fade {
+  -webkit-animation: fade 6s ease-in-out;
+  -moz-animation: fade 6s ease-in-out;
+  animation: fade 6s ease-in-out;
+}
+@keyframes popUp {
+  from {
+    transform: translateY(500px);
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+    transform: translateY(500px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@keyframes popLeft {
+  from {
+    transform: translateX(-500px);
+  }
 
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes fadeLater {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @keyframes glow {
   from {
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073,
