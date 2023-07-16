@@ -1,4 +1,5 @@
 document.title = "Home";
+import FadeOnView from "../components/FadeOnView";
 import Topbar from "../components/Topbar";
 const date = new Date();
 const birthday = new Date("April 10 2008");
@@ -47,6 +48,9 @@ export default function () {
       <div class="popUp text-4xl text-center md:py-32">
         Take a look at some stuff I did:
       </div>
+      <FadeOnView class="your mom">
+        <div> your mom</div>
+      </FadeOnView>
     </div>
   );
 }
