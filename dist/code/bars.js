@@ -146,15 +146,15 @@ function contactInfo(bar) {
   const discord = createContainer("/svg/discord.svg", "ellie_is_jelly");
   const github = createContainer(
     "/svg/github-dark.svg",
-    "CaioMGT",
+    "ellieisjelly",
     true,
-    "https://github.com/CaioMGT"
+    "https://github.com/ellieisjelly"
   );
   const email = createContainer(
     "/svg/email.svg",
-    "caio@caiomgt.com",
+    "ellie@caiomgt.com",
     true,
-    "mailto:caio@caiomgt.com"
+    "mailto:ellie@caiomgt.com"
   );
   const kofi = createContainer(
     "https://storage.ko-fi.com/cdn/cup-border.png",
