@@ -10,11 +10,14 @@ function onIntersect(entries: IntersectionObserverEntry[]) {
 }
 const observer = new IntersectionObserver(onIntersect, { threshold: 0.2 });
 export default function FadeOnView(props: {
-  class: string;
-  children: string | JSXElement;
+  style?: string;
+  class?: string;
+  children?: string | JSXElement;
 }) {
   const element = (
-    <div class={props.class + " fadeInSection"}>{props.children}</div>
+    <div class={props.class + " fadeInSection"} style={props.style}>
+      {props.children}
+    </div>
   );
   observer.observe(element);
   return element;

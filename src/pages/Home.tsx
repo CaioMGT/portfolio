@@ -14,12 +14,11 @@ export default function () {
       <Topbar activeButton=""></Topbar>
       <div class="md:grid grid-cols-2 mx-4 px-8 justify-center overflow-x-hidden my-12">
         <div class="my-12 text-slate-300 lg:pr-32 xl:pr-64">
-          <div class="text-6xl text-white popLeft">
+          <div class="text-6xl text-white popLeft tracking-wider font-light">
             Hi, I'm <span class="glow text-pink-200">Ellie</span>
           </div>
           <div class="text-2xl popLeftLong">Programmer, UI Designer</div>
           <div class="fadeLong">
-            <div class="text-1xl">Here's a little about me:</div>
             <div>
               I'm a {age} year old from Brazil, well-versed in programming both
               front-end and back-end applications. Starting at an early age,
@@ -31,7 +30,7 @@ export default function () {
           </div>
         </div>
         <div class="my-12 text-slate-200  lg:pl-32 xl:pl-64">
-          <div class="fadeLonger text-6xl">
+          <div class="fadeLonger text-6xl tracking-wider font-light">
             My <span class="glow text-pink-200">Likes </span>
           </div>
           <div class="fadeLonger">
@@ -45,12 +44,12 @@ export default function () {
           </div>
         </div>
       </div>
-      <div class="popUp text-4xl text-center md:py-32">
-        Take a look at some stuff I did:
+      <div class="bg-slate-900 h-screen md:my-32">
+        <FadeOnView class="text-4xl text-center">
+          Take a look at some stuff I did:
+        </FadeOnView>
+        I do roblox
       </div>
-      <FadeOnView class="your mom">
-        <div> your mom</div>
-      </FadeOnView>
     </div>
   );
 }

@@ -9,7 +9,7 @@ function TopbarButton(props: { name: string; href: string }) {
 }
 export default function Topbar(props: { activeButton: string }) {
   return (
-    <div class="w-full border-slate-800/5 border-b-4 py-2 flex flex-row-reverse px-2 bg-transparent sticky backdrop-blur top-0 z-50">
+    <div class="w-full border-gray-600/20 border-b-2 flex flex-row-reverse px-2 bg-transparent sticky backdrop-blur top-0 z-50">
       <TopbarButton href="/" name="Home"></TopbarButton>
     </div>
   );
